@@ -12,14 +12,29 @@
         $(document).ready(function(){
             $('#btnSubmit').click(function(){
 
-                alert($('#username').value);
-//                if($('#username').value == ''){
-////                    $(this).focus();
-//                    alert("sd5fs");
+                if($("#username").val() == ''){
+                    $("input[name='username']").focus();
+                    $('#message').html("User Name can't be blank");
+                    return false;
+                }else{
+                    //return true;
+                }
 
+                if($("#password").val() == '') {
+                    $("input[name='txtPassword']").focus();
+                    $('#message').html("Password can't be blank");
+                    return false;
+                }else{
+                    return true;
+                }
+
+            })
+            $("#username").click(function(){
+                $('#message').hide(300);
             });
-
-
+            $("#password").click(function(){
+                $('#message').hide(300);
+            });
         });
     </script>
 </head>
@@ -29,14 +44,14 @@
 <div class="logo"></div>
 <div class="login-block">
     <h1>Login</h1>
-    <p class="error">
+    <p id="message" class="error">
         <?php
         $feedback=$this->session->userdata('error');
         if(isset($feedback)){echo $feedback;}
         $this->session->unset_userdata('error');
         ?></p>
-    <form action="login" method="post">
-        <input type="text" name="username" value="" placeholder="Username/email" id="username"/>
+    <form action="<?php echo base_url();?>login" method="post">
+        <input type="email" name="username" value="" placeholder="Username/email" id="username"/>
         <input type="password" name="txtPassword" value="" placeholder="Password" id="password"/>
         <button type="button" id="btnSubmit">Submit</button>
 
