@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2015 at 04:38 AM
+-- Generation Time: Dec 01, 2015 at 09:24 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.5.28
 
@@ -39,6 +39,112 @@ CREATE TABLE IF NOT EXISTS `admin_user_role` (
 
 INSERT INTO `admin_user_role` (`role_id`, `role_name`, `created`, `modified`) VALUES
 (1, 'Super Admin', '2015-11-06 09:00:00', '2015-11-06 16:37:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_category`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_category` (
+  `category_id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `remarks` varchar(100) NOT NULL,
+  `created` datetime NOT NULL,
+  `created_by` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_fevourite`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_fevourite` (
+  `fevourite_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_make`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_make` (
+  `make_id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `remarks` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `created_by` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_message`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_message` (
+  `message_id` int(10) NOT NULL,
+  `sender_id` int(10) NOT NULL,
+  `receiver_id` int(10) NOT NULL,
+  `message_body` text NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_model`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_model` (
+  `model_id` int(10) NOT NULL,
+  `make_id` int(10) NOT NULL,
+  `model_name` varchar(100) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `created_by` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_product`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_product` (
+  `product_id` int(10) NOT NULL,
+  `make_id` int(10) NOT NULL,
+  `model_id` int(10) NOT NULL,
+  `manufacture_year` varchar(4) NOT NULL,
+  `manufacture_month` varchar(2) NOT NULL,
+  `price` varchar(15) NOT NULL,
+  `desplacement` varchar(20) NOT NULL,
+  `steering` varchar(20) NOT NULL,
+  `condition` varchar(20) NOT NULL,
+  `made_in` varchar(25) NOT NULL,
+  `fuel` varchar(25) NOT NULL,
+  `body_style` varchar(255) NOT NULL,
+  `door` varchar(20) NOT NULL,
+  `no_of_passenger` varchar(10) NOT NULL,
+  `dimension` varchar(200) NOT NULL,
+  `exterior_color` varchar(20) NOT NULL,
+  `interior_color` varchar(20) NOT NULL,
+  `expiry_date` date NOT NULL,
+  `reference_no` varchar(20) NOT NULL,
+  `options` text NOT NULL,
+  `seller_id` int(10) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -87,6 +193,10 @@ CREATE TABLE IF NOT EXISTS `tst_user` (
   `status` int(1) NOT NULL,
   `current_password` varchar(32) NOT NULL,
   `old_password` varchar(32) NOT NULL,
+  `newsletter_notification` int(2) NOT NULL,
+  `message_notification` int(2) NOT NULL,
+  `last_loging` datetime NOT NULL,
+  `ip_address` varchar(20) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -100,6 +210,42 @@ CREATE TABLE IF NOT EXISTS `tst_user` (
 --
 ALTER TABLE `admin_user_role`
   ADD PRIMARY KEY (`role_id`);
+
+--
+-- Indexes for table `tbl_category`
+--
+ALTER TABLE `tbl_category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `tbl_fevourite`
+--
+ALTER TABLE `tbl_fevourite`
+  ADD PRIMARY KEY (`fevourite_id`);
+
+--
+-- Indexes for table `tbl_make`
+--
+ALTER TABLE `tbl_make`
+  ADD PRIMARY KEY (`make_id`);
+
+--
+-- Indexes for table `tbl_message`
+--
+ALTER TABLE `tbl_message`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Indexes for table `tbl_model`
+--
+ALTER TABLE `tbl_model`
+  ADD PRIMARY KEY (`model_id`);
+
+--
+-- Indexes for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `tst_admin_user`
@@ -122,6 +268,36 @@ ALTER TABLE `tst_user`
 --
 ALTER TABLE `admin_user_role`
   MODIFY `role_id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `tbl_category`
+--
+ALTER TABLE `tbl_category`
+  MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_fevourite`
+--
+ALTER TABLE `tbl_fevourite`
+  MODIFY `fevourite_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_make`
+--
+ALTER TABLE `tbl_make`
+  MODIFY `make_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_message`
+--
+ALTER TABLE `tbl_message`
+  MODIFY `message_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_model`
+--
+ALTER TABLE `tbl_model`
+  MODIFY `model_id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tst_admin_user`
 --
