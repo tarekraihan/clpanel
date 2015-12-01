@@ -2,10 +2,29 @@
 
 class Backdoor extends CI_Controller
 {
-
+    /**********************************************
+     * Developer : Tarek Raihan                   *
+     * Developer Email : tarekraihan@yahoo.com    *
+     * Project : TSTJAPAN.CO.JP                   *
+     * Script : Main  controler                   *
+     * Start Date : 10-11-2015                    *
+     * Last Update : 10-11-2015                   *
+     **********************************************/
 
     public function index()
     {
+        if($this->session->userdata('email_address')){
+            redirect('backdoor/dashboard');
+        }else{
+            $data['title']="Login";
+            $this->load->view('login');
+
+        }
+    }
+
+    public function dashboard()
+    {
+
         $this->load->view('includes/admin_header');
         $this->load->view('index');
         $this->load->view('includes/admin_footer');

@@ -23,6 +23,12 @@ body {
     margin: 0 auto;
 }
 
+.error{
+    color : #ff656c;
+    text-align: center;
+    font-weight: normal;
+}
+
 .login-block h1 {
     text-align: center;
     color: #000;
