@@ -63,12 +63,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Tarek Raihan</a>
+            <a class="navbar-brand" href="<?php echo base_url();?>"><?php echo $this->session->userdata('admin_first_name').' '.$this->session->userdata('admin_last_name');?></a>
         </div>
         <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;">Welcome To TST Car Admin Panel &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a>
+font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a>
         </div>
     </nav>
     <!-- /. NAV TOP  -->

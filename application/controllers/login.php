@@ -18,13 +18,16 @@ class Login extends CI_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
-            redirect('admin_panel/index');
+            redirect('backdoor/index');
         }
         else
         {
-            $data['email_address']=htmlentities($this->input->post('txtEmail'));
-            $data['password']=htmlentities($this->input->post('txtPassword'));
+            $data['email_address']=htmlentities($this->input->post('username'));
+            $data['password']=$this->input->post('txtPassword');
+            /*print_r($data);
+            die;*/
             $result=$this->registration_model->check_admin_user($data);
+
             if($result)
             {
                 $sdata['admin_user_id']=$result->admin_user_id;

@@ -8,9 +8,9 @@
 
     <link href="<?php echo base_url(); ?>resource/css/login.css" rel="stylesheet"/>
     <script src="<?php echo base_url();?>resource/js/jquery-1.11.3.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
-            $('#btnSubmit').click(function(){
+            /*$('#btnSubmit').click(function(){
 
                 if($("#username").val() == ''){
                     $("input[name='username']").focus();
@@ -28,13 +28,13 @@
                     return true;
                 }
 
-            })
-            $("#username").click(function(){
-                $('#message').hide(300);
-            });
-            $("#password").click(function(){
-                $('#message').hide(300);
-            });
+            })*/
+//            $("#username").click(function(){
+//                $('#message').hide(300);
+//            });
+//            $("#password").click(function(){
+//                $('#message').hide(300);
+//            });
         });
     </script>
 </head>
@@ -50,10 +50,10 @@
         if(isset($feedback)){echo $feedback;}
         $this->session->unset_userdata('error');
         ?></p>
-    <form action="<?php echo base_url();?>login" method="post">
+    <form action="<?php echo base_url();?>login/login_validation" method="post">
         <input type="email" name="username" value="" placeholder="Username/email" id="username"/>
         <input type="password" name="txtPassword" value="" placeholder="Password" id="password"/>
-        <button type="button" id="btnSubmit">Submit</button>
+        <button type="submit" id="btnSubmit">Submit</button>
 
     </form>
 </div>
