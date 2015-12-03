@@ -47,4 +47,13 @@ class Login extends CI_Controller
             }
         }
     }
+
+    public function admin_log_out()
+    {
+
+        $this->session->unset_userdata();
+        $this->session->sess_destroy();
+
+        redirect('backdoor');
+    }
 }

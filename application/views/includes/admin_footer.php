@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <a class="navbar-brand" href="<?php echo base_url(); ?>/backdoor/">Index Group</a>
+        <a class="navbar-brand" href="<?php echo base_url(); ?>/backdoor/">DataPage</a>
     </div>
-    <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> © Core Concept Inc. 2012 -
+    <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> © TST Japan Car Ltd -
         20115
     </div>
 </nav>

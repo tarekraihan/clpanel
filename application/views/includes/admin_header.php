@@ -68,7 +68,7 @@
         <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a>
+font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo base_url();?>login/admin_log_out" class="btn btn-danger square-btn-adjust">Logout</a>
         </div>
     </nav>
     <!-- /. NAV TOP  -->

@@ -13,7 +13,7 @@ class Backdoor extends CI_Controller
 
     public function index()
     {
-        if($this->session->userdata('email_address')){
+        if($this->session->userdata('admin_email')){
             redirect('backdoor/dashboard');
         }else{
             $data['title']="Login";
@@ -24,10 +24,13 @@ class Backdoor extends CI_Controller
 
     public function dashboard()
     {
-
-        $this->load->view('includes/admin_header');
-        $this->load->view('index');
-        $this->load->view('includes/admin_footer');
+        if($this->session->userdata('admin_email')) {
+            $this->load->view('includes/admin_header');
+            $this->load->view('index');
+            $this->load->view('includes/admin_footer');
+        }else{
+            redirect('backdoor/index');
+        }
     }
 
     public function adb_fact_sheet()
