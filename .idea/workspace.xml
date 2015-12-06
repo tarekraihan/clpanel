@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="207cd666-ce48-4076-b3d0-adf0f230d9ae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/admin_user_role.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/common_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/delete_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/edit_admin_user_role.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/select_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/includes/admin_header.php" afterPath="$PROJECT_DIR$/application/views/includes/admin_header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/autoload.php" afterPath="$PROJECT_DIR$/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/backdoor.php" afterPath="$PROJECT_DIR$/application/controllers/backdoor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/assets/css/custom.css" afterPath="$PROJECT_DIR$/resource/assets/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tst_car.sql" afterPath="$PROJECT_DIR$/tst_car.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="clpanel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,11 +70,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="backdoor.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="backdoor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/backdoor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8039568" vertical-offset="2045" max-vertical-offset="3162">
+            <state vertical-scroll-proportion="18.5" vertical-offset="2045" max-vertical-offset="3162">
               <caret line="92" column="118" selection-start-line="92" selection-start-column="118" selection-end-line="92" selection-end-column="118" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.18312387" vertical-offset="0" max-vertical-offset="557">
+              <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -107,6 +108,7 @@
         <option value="$PROJECT_DIR$/application/views/includes/admin_header.php" />
         <option value="$PROJECT_DIR$/application/views/edit_admin_user_role.php" />
         <option value="$PROJECT_DIR$/application/controllers/backdoor.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -259,7 +261,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -268,7 +270,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -462,8 +464,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/backdoor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8039568" vertical-offset="2045" max-vertical-offset="3162">
+        <state vertical-scroll-proportion="18.5" vertical-offset="2045" max-vertical-offset="3162">
           <caret line="92" column="118" selection-start-line="92" selection-start-column="118" selection-end-line="92" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18312387" vertical-offset="0" max-vertical-offset="557">
+          <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
           <folding />
         </state>
       </provider>
