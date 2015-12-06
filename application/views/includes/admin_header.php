@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>TST CAR Admin</title>
+    <title><?php echo $title;?></title>
     <!-- BOOTSTRAP STYLES-->
     <link href="<?php echo base_url(); ?>resource/assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FONTAWESOME STYLES-->
@@ -90,7 +90,7 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                     <a href="#"><i class="fa fa-sitemap fa-2x"></i>Admin User <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo base_url(); ?>backdoor/admin_role/">Admin Role</a>
+                            <a href="<?php echo base_url(); ?>backdoor/admin_user_role/">Admin Role</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>backdoor/create_user/">Create User</a>
