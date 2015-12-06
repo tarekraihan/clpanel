@@ -78,6 +78,12 @@ class Backdoor extends CI_Controller
         return ( ! preg_match("/^([-a-zA-Z_ .-])+$/i", $str)) ? FALSE : TRUE;
     }
 
+    function phone_number($str){
+        return ( ! preg_match("/^([+0-9])+$/i", $str)) ? FALSE : TRUE;
+    }
+
+
+
     public function edit_admin_user_role($msg='')
     {
         if(!$this->session->userdata('admin_email')){
@@ -120,12 +126,54 @@ class Backdoor extends CI_Controller
 
     }
 
-    public function adb_business_plan()
+    public function admin_user($msg='')
     {
-        $this->load->view('includes/admin_header');
-        $this->load->view('adb_business_plan');
-        $this->load->view('includes/admin_footer');
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Save !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
+            }
+            $this->form_validation->set_rules('txtFirstName','First Name','trim|required|callback_alpha_dash_space|min_length[4]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('txtLastName','Last Name','trim|required|callback_alpha_dash_space|min_length[4]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('txtEmailAddress','Email Address','trim|valid_email|required|min_length[5]|max_length[20]|xss_clean|is_unique[tst_admin_user.admin_email]');
+            $this->form_validation->set_rules('txtAddress','Address','trim|required|min_length[5]|max_length[40]|xss_clean');
+            $this->form_validation->set_rules('txtPhone','Phone','trim|required|callback_phone_number|min_length[4]|max_length[15]|xss_clean');
+            $this->form_validation->set_rules('txtPassword','Password','trim|required|min_length[4]|max_length[15]|xss_clean|matches[txtRePassword]');
+            $this->form_validation->set_rules('txtRePassword','Re Password','trim|required|min_length[4]|max_length[15]');
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Create Admin User";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('create_admin_user');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
+                $date = date('Y-m-d h:i:s');
+
+                $this->common_model->data=array('role_name'=>$this->input->post('txtAdminRole'),'created'=>$date);
+                $this->common_model->table_name='admin_user_role';
+                $result=$this->common_model->insert();
+
+                if($result)
+                {
+                    redirect('backdoor/admin_user_role/success');
+                }
+                else
+                {
+                    redirect('backdoor/admin_user_role/error');
+                }
+
+            }
+        }
+
     }
+
+
 
     public function adb_strategy_program()
     {

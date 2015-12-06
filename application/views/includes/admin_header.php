@@ -93,10 +93,14 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                             <a href="<?php echo base_url(); ?>backdoor/admin_user_role/">Admin Role</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>backdoor/create_user/">Create User</a>
+                            <a href="<?php echo base_url(); ?>backdoor/admin_user/">Create User</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>backdoor/admin_list/">Admin List</a>
+                        </li>
+
+                        <li>
+                            <a href="<?php echo base_url(); ?>backdoor/Employee/">Employee</a>
                         </li>
 
                     </ul>

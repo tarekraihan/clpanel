@@ -462,4 +462,8 @@ a:hover {
     background: transparent;
 }
 
+.form-group {
+     margin-bottom: 1px;
+}
+
 
