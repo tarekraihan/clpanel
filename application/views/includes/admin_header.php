@@ -99,9 +99,23 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                             <a href="<?php echo base_url(); ?>backdoor/admin_list/">Admin List</a>
                         </li>
 
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-sitemap fa-2x"></i>Car Information <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo base_url(); ?>backdoor/Employee/">Employee</a>
+                            <a href="<?php echo base_url(); ?>backdoor/make/">Manufacturar</a>
                         </li>
+                        <li>
+                            <a href="<?php echo base_url(); ?>backdoor/admin_user/">Create User</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url(); ?>backdoor/admin_list/">Admin List</a>
+                        </li>
+
 
                     </ul>
                 </li>

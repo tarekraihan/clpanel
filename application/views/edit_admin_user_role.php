@@ -47,6 +47,8 @@ $row['role_name']='';
                         <div class="form-group">
                             <label>Admin Role Name</label>
                             <input type="hidden" value="<?php echo $row['role_id'];?>" name="txtRoleId"/>
+
+
                             <input class="form-control" name="txtEditAdminRole" value="<?php echo $row['role_name'];?>" placeholder="Enter role" required="required"/>
                         </div>
                         <div class="form-group">

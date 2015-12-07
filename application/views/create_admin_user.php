@@ -22,7 +22,7 @@ if(isset($_GET['role_id']))
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-6 ">
                 <div class="form" >
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="box-content"  >
                             <?php
                             //-----Display Success or Error message---
@@ -91,13 +91,57 @@ if(isset($_GET['role_id']))
                         </div>
 
                         <div class="form-group">
+                            <label>Admin Role</label>
+
+                                <select pattern="[0-9]{1,3}"  name="txtAdminRole" id="txtAdminRole" data-rel="chosen" class="form-control">
+                                    <option value="">Select Admin Role</option>
+                                    <?php
+                                    $this->common_model->order_column = 'role_id';
+                                    $this->common_model->table_name = 'admin_user_role';
+                                    $query=$this->common_model->select_all();
+                                    foreach ($query->result() as $row)
+                                    {
+                                        ?>
+                                        <option value="<?php echo $row->role_id;?>"><?php echo $row->role_name;?></option>
+                                    <?php
+
+                                    }
+                                    ?>
+
+                                </select>
+
+                        </div>
+
+                        <div class="form-group">
                             <label>Profile Picture</label>
                             <input type="file" class="form-control" name="txtProfilePicture" placeholder="Select Profile Picture" required="required"/>
                         </div>
                         <div class="form-group">
-                            <label class="red"><?php echo form_error('txtRePassword');?></label>
+                            <label class="red"><?php echo form_error('txtProfilePicture');?></label>
                         </div>
 
+                        <div class="checkbox">
+                            <label><input name="txtIsActive" type="checkbox"> IsActive</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <?php
+                            $data = array(
+                                'name'        => 'username',
+                                'id'          => 'username',
+                                'maxlength'   => '100',
+                                'size'        => '50',
+                                'class'       => 'form-control',
+                            );
+
+                            echo form_input($data);
+                            ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="red"><?php echo form_error('username');?></label>
+                        </div>
 
 
                         <input type="submit" name="btnSubmit" class="btn btn-danger" id="admin_user_role">

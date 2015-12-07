@@ -17,7 +17,7 @@ class Backdoor extends CI_Controller
             redirect('backdoor/dashboard');
         }else{
             $data['title']="Login";
-            $this->load->view('login');
+            $this->load->view('login',$data);
 
         }
     }
@@ -25,7 +25,8 @@ class Backdoor extends CI_Controller
     public function dashboard()
     {
         if($this->session->userdata('admin_email')) {
-            $this->load->view('includes/admin_header');
+            $data['title']="Login";
+            $this->load->view('includes/admin_header',$data);
             $this->load->view('index');
             $this->load->view('includes/admin_footer');
         }else{
@@ -91,7 +92,7 @@ class Backdoor extends CI_Controller
         }else{
 
             if($msg == 'success'){
-                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Update !!</div>';
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Update !!</div>';
             }else if($msg == 'error')
             {
                 $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Update !!</div>';
@@ -138,10 +139,11 @@ class Backdoor extends CI_Controller
             {
                 $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
             }
-            $this->form_validation->set_rules('txtFirstName','First Name','trim|required|callback_alpha_dash_space|min_length[4]|max_length[20]|xss_clean');
-            $this->form_validation->set_rules('txtLastName','Last Name','trim|required|callback_alpha_dash_space|min_length[4]|max_length[20]|xss_clean');
-            $this->form_validation->set_rules('txtEmailAddress','Email Address','trim|valid_email|required|min_length[5]|max_length[20]|xss_clean|is_unique[tst_admin_user.admin_email]');
-            $this->form_validation->set_rules('txtAddress','Address','trim|required|min_length[5]|max_length[40]|xss_clean');
+            $this->form_validation->set_rules('txtFirstName','First Name','trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('username','username','trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('txtLastName','Last Name','trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('txtEmailAddress','Email Address','trim|valid_email|required|min_length[5]|max_length[80]|xss_clean|is_unique[tst_admin_user.admin_email]');
+            $this->form_validation->set_rules('txtAddress','Address','trim|required|min_length[5]|max_length[100]|xss_clean');
             $this->form_validation->set_rules('txtPhone','Phone','trim|required|callback_phone_number|min_length[4]|max_length[15]|xss_clean');
             $this->form_validation->set_rules('txtPassword','Password','trim|required|min_length[4]|max_length[15]|xss_clean|matches[txtRePassword]');
             $this->form_validation->set_rules('txtRePassword','Re Password','trim|required|min_length[4]|max_length[15]');
@@ -153,6 +155,77 @@ class Backdoor extends CI_Controller
                 $this->load->view('includes/admin_footer');
             }else
             {
+                $upload_result = $this->do_upload('./resource/images/admin/','txtProfilePicture');
+               /* print_r($upload_result);
+                die;*/
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data=array(
+                    'admin_first_name'=>htmlentities($this->input->post('txtFirstName')),
+                    'admin_last_name'=>htmlentities($this->input->post('txtLastName')),
+                    'admin_email'=>htmlentities($this->input->post('txtEmailAddress')),
+                    'admin_address'=>htmlentities($this->input->post('txtAddress')),
+                    'admin_phone'=>$this->input->post('txtPhone'),
+                    'admin_role'=>$this->input->post('txtAdminRole'),
+                    'current_password'=>md5($this->input->post('txtPassword')),
+                    'status'=>$this->input->post('txtIsActive'),
+                    'profile_picture'=>$upload_result['file_name'],
+                    'created'=>$date
+                );
+                $this->common_model->table_name='tst_admin_user';
+                $result=$this->common_model->insert();
+
+                if($result)
+                {
+                    redirect('backdoor/admin_user/success');
+                }
+                else
+                {
+                    redirect('backdoor/admin_user/error');
+                }
+
+            }
+        }
+
+    }
+
+    public function do_upload($path,$field=''){
+        $this->load->library('upload');
+        $config['upload_path'] = $path;
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = '4096';
+        $config['file_name'] = '1';
+
+        $this->upload->initialize($config);
+
+        if(!$this->upload->do_upload($field)){
+            return $this->upload->display_errors();
+        }else{
+            return $this->upload->data();
+        }
+    }
+
+    public function make($msg='')
+    {
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Save !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
+            }
+            $this->form_validation->set_rules('txtManufacturar','Manufacturar Name','trim|required|alpha|min_length[4]|max_length[20]|xss_clean|is_unique[tbl_make.name]');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Create Manufacturar";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('make');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
                 $date = date('Y-m-d h:i:s');
 
                 $this->common_model->data=array('role_name'=>$this->input->post('txtAdminRole'),'created'=>$date);
@@ -161,19 +234,17 @@ class Backdoor extends CI_Controller
 
                 if($result)
                 {
-                    redirect('backdoor/admin_user_role/success');
+                    redirect('backdoor/make/success');
                 }
                 else
                 {
-                    redirect('backdoor/admin_user_role/error');
+                    redirect('backdoor/make/error');
                 }
 
             }
         }
 
     }
-
-
 
     public function adb_strategy_program()
     {

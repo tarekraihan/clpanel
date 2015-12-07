@@ -13,7 +13,7 @@ if(isset($_GET['role_id']))
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h2>Admin User Role</h2>
+                <h2>Manufacturar</h2>
 
             </div>
         </div>
@@ -29,32 +29,35 @@ if(isset($_GET['role_id']))
                             if(isset($feedback)){
                                 echo $feedback;
                             }
+                            //----Form Tag Start-------------
+                            $attributes = array('class' => 'email', 'id' => 'myform');
+
+                            echo form_open('backdoor/make', $attributes);
                             ?>
                         </div>
                         <div class="form-group">
-                            <label>Admin Role Name</label>
+                            <label>Manufacturar Name</label>
 
                             <?php
                             $attributes=array(
-                                'name'=>'txtAdminRole',
+                                'name'=>'txtManufacturar',
                                 'class'=>'form-control',
-                                'placeholder'=>'Write Admin role',
-                                'value' => set_value('txtAdminRole'),
-                                'required'=>'required'
+                                'placeholder'=>'Write Manufacturar Name',
+                                'value' => set_value('txtManufacturar'),
                             );
                             echo form_input($attributes);
                             ?>
-
                         </div>
                         <div class="form-group">
-                            <label class="red"><?php echo form_error('txtAdminRole');?></label>
+                            <label class="red"><?php echo form_error('txtManufacturar');?></label>
 
                         </div>
+
                         <?php
                             $attribute=array(
                                 'name'=>'btnSubmit',
                                 'class'=>'btn btn-danger ',
-                                'value'=>'Submit',
+                                'value'=>'Save',
 
                             );
                             echo form_submit($attribute);//--Form Submit Button

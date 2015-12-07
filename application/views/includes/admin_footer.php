@@ -15,7 +15,7 @@
 <script src="<?php echo base_url(); ?>resource/assets/js/bootstrap.min.js"></script>
 <!-- METISMENU SCRIPTS -->
 <script src="<?php echo base_url(); ?>resource/assets/js/jquery.metisMenu.js"></script>
-<!-- MORRIS CHART SCRIPTS -->
+ <!--MORRIS CHART SCRIPTS -->
 <script src="<?php echo base_url(); ?>resource/assets/js/morris/raphael-2.1.0.min.js"></script>
 <script src="<?php echo base_url(); ?>resource/assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
