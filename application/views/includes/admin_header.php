@@ -82,8 +82,7 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
 
 
                 <li>
-                    <a class="active-menu" href="<?php echo base_url(); ?>backdoor/"><i
-                            class="fa fa-dashboard fa-2x"></i> Dashboard</a>
+                    <a class="active-menu" href="<?php echo base_url(); ?>backdoor/"><i class="fa fa-dashboard fa-2x"></i> Dashboard</a>
                 </li>
 
                 <li>
@@ -98,8 +97,6 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                         <li>
                             <a href="<?php echo base_url(); ?>backdoor/admin_list/">Admin List</a>
                         </li>
-
-
                     </ul>
                 </li>
 
@@ -110,7 +107,7 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                             <a href="<?php echo base_url(); ?>backdoor/make/">Manufacturar</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>backdoor/admin_user/">Create User</a>
+                            <a href="<?php echo base_url(); ?>backdoor/model/">Car Model</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url(); ?>backdoor/admin_list/">Admin List</a>

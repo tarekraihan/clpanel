@@ -20,7 +20,5 @@
 <script src="<?php echo base_url(); ?>resource/assets/js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="<?php echo base_url(); ?>resource/assets/js/custom.js"></script>
-
-
 </body>
 </html>

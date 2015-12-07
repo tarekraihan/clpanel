@@ -216,7 +216,7 @@ class Backdoor extends CI_Controller
             {
                 $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
             }
-            $this->form_validation->set_rules('txtManufacturar','Manufacturar Name','trim|required|alpha|min_length[4]|max_length[20]|xss_clean|is_unique[tbl_make.name]');
+            $this->form_validation->set_rules('txtManufacturar','Manufacturar Name','trim|required|alpha|min_length[2]|max_length[20]|xss_clean|is_unique[tbl_make.name]');
 
             if ($this->form_validation->run() == FALSE)
             {
@@ -227,9 +227,12 @@ class Backdoor extends CI_Controller
             }else
             {
                 $date = date('Y-m-d h:i:s');
-
-                $this->common_model->data=array('role_name'=>$this->input->post('txtAdminRole'),'created'=>$date);
-                $this->common_model->table_name='admin_user_role';
+                $this->common_model->data=array(
+                    'name'=>$this->input->post('txtManufacturar'),
+                    'remarks'=>$this->input->post('txtRemarks'),
+                    'created'=>$date
+                );
+                $this->common_model->table_name='tbl_make';
                 $result=$this->common_model->insert();
 
                 if($result)
@@ -245,6 +248,100 @@ class Backdoor extends CI_Controller
         }
 
     }
+
+    public function edit_make($msg='')
+    {
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Update !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Update !!</div>';
+            }
+            $this->form_validation->set_rules('txtManufacturar','Manufacturar Name','trim|required|alpha|min_length[2]|max_length[20]|xss_clean');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Edit Manufacturar";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('edit_make');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data=array(
+                    'name'=>$this->input->post('txtManufacturar'),
+                    'remarks'=>$this->input->post('txtRemarks'),
+                    'created'=>$date
+                );
+                $this->common_model->table_name='tbl_make';
+                $this->common_model->where=array('make_id'=>$this->input->post('txtMakeId'));
+                $result=$this->common_model->update();
+                if($result)
+                {
+                    redirect('backdoor/edit_make/success');
+                }
+                else
+                {
+                    redirect('backdoor/edit_make/error');
+                }
+
+            }
+        }
+
+    }
+
+
+    public function model($msg='')
+    {
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Save !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
+            }
+            $this->form_validation->set_rules('txtModelName','Model Name','trim|required|min_length[2]|max_length[70]|xss_clean');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Create Model";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('model');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data=array(
+                    'model_name'=>htmlentities($this->input->post('txtModelName')),
+                    'make_id'=>$this->input->post('txtMakeId'),
+                    'created_by'=> $this->session->userdata('admin_user_id'),
+                    'created'=>$date,
+                );
+                $this->common_model->table_name='tbl_model';
+                $result=$this->common_model->insert();
+
+                if($result)
+                {
+                    redirect('backdoor/model/success');
+                }
+                else
+                {
+                    redirect('backdoor/model/error');
+                }
+
+            }
+        }
+
+    }
+
+
 
     public function adb_strategy_program()
     {

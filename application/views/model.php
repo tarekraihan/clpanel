@@ -1,10 +1,10 @@
 <?php
 
-if(isset($_GET['make_id']))
+if(isset($_GET['model_id']))
 {
-    $id=$_GET['make_id'];
-    $table='tbl_make';
-    $id_field='make_id';
+    $id=$_GET['model_id'];
+    $table='tbl_model';
+    $id_field='model_id';
     $this->delete_model->Delete_Single_Row($id,$table,$id_field);
 }
 ?>
@@ -13,7 +13,7 @@ if(isset($_GET['make_id']))
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h2>Manufacturar</h2>
+                <h2>Create Model</h2>
 
             </div>
         </div>
@@ -32,52 +32,47 @@ if(isset($_GET['make_id']))
                             //----Form Tag Start-------------
                             $attributes = array('class' => 'email', 'id' => 'myform');
 
-                            echo form_open('backdoor/make', $attributes);
+                            echo form_open('backdoor/model', $attributes);
                             ?>
                         </div>
                         <div class="form-group">
                             <label>Manufacturar Name</label>
+                            <select name="txtMakeId" class="form-control">
+                                <?php
+                                    echo $this->select_model->Select_box($table='tbl_make');
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="red"><?php echo form_error('txtMakeId');?></label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Model Name</label>
                             <?php
                             $attributes=array(
-                                'name'=>'txtManufacturar',
+                                'name'=>'txtModelName',
                                 'class'=>'form-control',
-                                'maxlength'   => '40',
-                                'placeholder'=>'Write Manufacturar Name',
-                                'value' => set_value('txtManufacturar'),
+                                'placeholder'=>'Write Model Name',
+                                'maxlength'   => '70',
+                                'value' => set_value('txtModelName'),
                             );
                             echo form_input($attributes);
                             ?>
                         </div>
                         <div class="form-group">
-                            <label class="red"><?php echo form_error('txtManufacturar');?></label>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label>Remarks</label>
-                            <?php
-                            $attributes=array(
-                                'name'=>'txtRemarks',
-                                'class'=>'form-control',
-                                'placeholder'=>'Write Remarks',
-                                'maxlength'   => '100',
-                                'value' => set_value('txtRemarks'),
-                            );
-                            echo form_input($attributes);
-                            ?>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtRemarks');?></label>
+                            <label class="red"><?php echo form_error('txtModelName');?></label>
                         </div>
                         <?php
-                            $attribute=array(
-                                'name'=>'btnSubmit',
-                                'class'=>'btn btn-danger ',
-                                'value'=>'Submit',
+                        $attribute=array(
+                            'name'=>'btnSubmit',
+                            'class'=>'btn btn-danger ',
+                            'value'=>'Submit',
 
-                            );
-                            echo form_submit($attribute);//--Form Submit Button
-                            echo form_close();//--Form closing tag </form>
+                        );
+                        echo form_submit($attribute);//--Form Submit Button
+                        echo form_close();//--Form closing tag </form>
                         ?>
                 </div>
             </div>
@@ -102,9 +97,7 @@ if(isset($_GET['make_id']))
                                 </thead>
                                 <tbody>
                                 <?php
-                                $this->common_model->order_column = 'make_id';
-                                $this->common_model->table_name = 'tbl_make';
-                                $query=$this->common_model->select_all();
+                                $row=$this->select_model->Select_model() = 'make_id';
                                 $sl=1;
                                 foreach ($query->result() as $row)
                                 {

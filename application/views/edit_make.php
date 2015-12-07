@@ -1,19 +1,34 @@
 <?php
 
-if(isset($_GET['make_id']))
-{
-    $id=$_GET['make_id'];
-    $table='tbl_make';
-    $id_field='make_id';
-    $this->delete_model->Delete_Single_Row($id,$table,$id_field);
-}
+    if(isset($_GET['make_id']))
+    {
+        $id=$_GET['make_id'];
+        $table='tbl_make';
+        $id_field='make_id';
+        $this->delete_model->Delete_Single_Row($id,$table,$id_field);
+    }
+
+    if(isset($_GET['id']))
+    {
+        $id=$_GET['id'];
+        $table='tbl_make';
+        $id_field='make_id';
+        $result=$this->select_model->Select_Single_Row($id,$table,$id_field);
+        /*print_r($row);
+            die;*/
+    }else{
+        $result['make_id']='';
+        $result['name']='';
+        $result['remarks']='';
+    }
+
 ?>
 
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h2>Manufacturar</h2>
+                <h2>Edit Manufacturar</h2>
 
             </div>
         </div>
@@ -32,18 +47,24 @@ if(isset($_GET['make_id']))
                             //----Form Tag Start-------------
                             $attributes = array('class' => 'email', 'id' => 'myform');
 
-                            echo form_open('backdoor/make', $attributes);
+                            echo form_open('backdoor/edit_make', $attributes);
                             ?>
                         </div>
                         <div class="form-group">
                             <label>Manufacturar Name</label>
                             <?php
+                            $data = array(  //--For hidden text field--
+                                'txtMakeId'  => $result['make_id'],
+                            );
+
+                            echo form_hidden($data);
+
                             $attributes=array(
                                 'name'=>'txtManufacturar',
                                 'class'=>'form-control',
                                 'maxlength'   => '40',
                                 'placeholder'=>'Write Manufacturar Name',
-                                'value' => set_value('txtManufacturar'),
+                                'value' => $result['name'],
                             );
                             echo form_input($attributes);
                             ?>
@@ -61,7 +82,7 @@ if(isset($_GET['make_id']))
                                 'class'=>'form-control',
                                 'placeholder'=>'Write Remarks',
                                 'maxlength'   => '100',
-                                'value' => set_value('txtRemarks'),
+                                'value' => $result['remarks'],
                             );
                             echo form_input($attributes);
                             ?>
@@ -70,14 +91,14 @@ if(isset($_GET['make_id']))
                             <label class="red"><?php echo form_error('txtRemarks');?></label>
                         </div>
                         <?php
-                            $attribute=array(
-                                'name'=>'btnSubmit',
-                                'class'=>'btn btn-danger ',
-                                'value'=>'Submit',
+                        $attribute=array(
+                            'name'=>'btnSubmit',
+                            'class'=>'btn btn-danger ',
+                            'value'=>'Update',
 
-                            );
-                            echo form_submit($attribute);//--Form Submit Button
-                            echo form_close();//--Form closing tag </form>
+                        );
+                        echo form_submit($attribute);//--Form Submit Button
+                        echo form_close();//--Form closing tag </form>
                         ?>
                 </div>
             </div>
