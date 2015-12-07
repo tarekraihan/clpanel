@@ -1,25 +1,25 @@
 <?php
 
-if(isset($_GET['role_id']))
-{
-    $id=$_GET['role_id'];
+    if(isset($_GET['role_id']))
+    {
+        $id=$_GET['role_id'];
+        $table='admin_user_role';
+        $id_field='role_id';
+        $this->delete_model->Delete_Single_Row($id,$table,$id_field);
+    }
+
+    if(isset($_GET['id']))
+    {
+    $id=$_GET['id'];
     $table='admin_user_role';
     $id_field='role_id';
-    $this->delete_model->Delete_Single_Row($id,$table,$id_field);
-}
-
-if(isset($_GET['id']))
-{
-$id=$_GET['id'];
-$table='admin_user_role';
-$id_field='role_id';
-$row=$this->select_model->Select_Single_Row($id,$table,$id_field);
-/*print_r($row);
-    die;*/
-}else{
-$row['role_id']='';
-$row['role_name']='';
-}
+    $row=$this->select_model->Select_Single_Row($id,$table,$id_field);
+    /*print_r($row);
+        die;*/
+    }else{
+    $row['role_id']='';
+    $row['role_name']='';
+    }
 ?>
 
 <div id="page-wrapper">

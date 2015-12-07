@@ -7,13 +7,27 @@ if(isset($_GET['model_id']))
     $id_field='model_id';
     $this->delete_model->Delete_Single_Row($id,$table,$id_field);
 }
+
+if(isset($_GET['id']))
+{
+    $id=$_GET['id'];
+    $table='tbl_model';
+    $id_field='model_id';
+    $result=$this->select_model->Select_Single_Row($id,$table,$id_field);
+    /*print_r($row);
+        die;*/
+}else{
+    $result['model_id']='';
+    $result['model_name']='';
+
+}
 ?>
 
 <div id="page-wrapper">
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h2>Create Model</h2>
+                <h2>Update Model</h2>
 
             </div>
         </div>
@@ -31,14 +45,14 @@ if(isset($_GET['model_id']))
                             //----Form Tag Start-------------
                             $attributes = array('class' => 'email', 'id' => 'myform');
 
-                            echo form_open('backdoor/model', $attributes);
+                            echo form_open('backdoor/edit_model', $attributes);
                             ?>
                         </div>
                         <div class="form-group">
                             <label>Manufacturar Name</label>
                             <select name="txtMakeId" class="form-control">
                                 <?php
-                                    echo $this->select_model->Select_box($table='tbl_make');
+                                echo $this->select_model->Select_box($table='tbl_make');
                                 ?>
                             </select>
                         </div>
@@ -50,12 +64,20 @@ if(isset($_GET['model_id']))
                         <div class="form-group">
                             <label>Model Name</label>
                             <?php
+
+                            $data = array(  //--For hidden text field--
+                                'txtModelId'  => $result['model_id'],
+                            );
+
+                            echo form_hidden($data);
+
+
                             $attributes=array(
                                 'name'=>'txtModelName',
                                 'class'=>'form-control',
                                 'placeholder'=>'Write Model Name',
                                 'maxlength'   => '70',
-                                'value' => set_value('txtModelName'),
+                                'value' => $result['model_name']
                             );
                             echo form_input($attributes);
                             ?>

@@ -275,7 +275,7 @@ class Backdoor extends CI_Controller
                 $this->common_model->data=array(
                     'name'=>$this->input->post('txtManufacturar'),
                     'remarks'=>$this->input->post('txtRemarks'),
-                    'created'=>$date
+                    'modified'=>$date
                 );
                 $this->common_model->table_name='tbl_make';
                 $this->common_model->where=array('make_id'=>$this->input->post('txtMakeId'));
@@ -334,6 +334,54 @@ class Backdoor extends CI_Controller
                 else
                 {
                     redirect('backdoor/model/error');
+                }
+
+            }
+        }
+
+    }
+
+    public function edit_model($msg='')
+    {
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Updated !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Update !!'.mysql_error().'</div>';
+            }
+            $this->form_validation->set_rules('txtModelName','Model Name','trim|required|min_length[2]|max_length[70]|xss_clean');
+            $this->form_validation->set_rules('txtMakeId','Select Manufacturar','trim|required|is_natural_no_zero|xss_clean');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Update Model";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('edit_model');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data=array(
+                    'model_name'=>htmlentities($this->input->post('txtModelName')),
+                    'make_id'=>$this->input->post('txtMakeId'),
+                    'created_by'=> $this->session->userdata('admin_user_id'),
+                    'modified'=>$date,
+                );
+                $this->common_model->table_name='tbl_model';
+                $this->common_model->where=array('model_id'=>$this->input->post('txtModelId'));
+                $result=$this->common_model->update();
+
+                if($result)
+                {
+                    redirect('backdoor/edit_model/success');
+                }
+                else
+                {
+                    redirect('backdoor/edit_model/error');
                 }
 
             }
