@@ -20,7 +20,6 @@
                     <input class="form-control" placeholder="Enter Password"/>
                 </div>
 
-
                 <label>Select Role</label>
                 <select class="form-control">
                     <option>Normal User</option>

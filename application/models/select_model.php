@@ -19,6 +19,14 @@ class Select_Model extends CI_Model
     }
 
 
+    public function Select_User()
+    {
+        $sql="SELECT a.admin_user_id, a.admin_first_name,a.admin_last_name, a.admin_phone, a.status, a.created, b.role_name FROM tst_admin_user AS a INNER JOIN admin_user_role AS b ON a.admin_role=b.role_id ORDER BY a.admin_user_id DESC";
+        $query=$this->db->query($sql);
+        return $query;
+
+    }
+
     public function Select_model()
     {
         $sql="SELECT a.model_id,a.model_name,a.created,b.name FROM tbl_model AS a INNER JOIN tbl_make AS b ON a.make_id=b.make_id ORDER BY a.model_id DESC";
@@ -26,6 +34,48 @@ class Select_Model extends CI_Model
         return $query;
 
     }
+
+    function Select_Single_Employee_Info($admin_id)
+    {
+        $query="SELECT a.admin_user_id,a.admin_first_name,a.admin_last_name,a.admin_email,a.admin_address,a.admin_phone,a.status,a.last_login,a.profile_picture,a.created,a.modified,b.role_name FROM tst_admin_user AS a INNER JOIN admin_user_role AS b ON a.admin_role=b.role_id admin_user_id='$admin_id'";
+        $result=mysql_query($query);
+        $row=mysql_fetch_array($result);
+        //$date_of_birth=date('d-m-Y',strtotime($row['created']));
+        //$date_of_joining=date('d-m-Y',strtotime($row[7]));
+        if($row['status']== 1){
+            $status= "Active";
+        }else{
+            $status= "Inactive";
+        }
+        $feedback='<div class="row mtop" id="employee_details">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <img width="150" height="187" src="'.base_url().'resource/images/amdin/'.$row['profile_picture'].'"  />
+                </div>
+ <div class="col-md-9">
+                    <p class="header_text">Personal Info</p>
+                    <div class="details">
+                        <p>Name : '.$row['admin_first_name'].' '.$row['admin_last_name'] .'</p>
+                        <p>Email Address :'.$row['admin_email'].'</p>
+                        <p>Phone :'.$row['admin_phone'].'</p>
+                        <p>User Role : '.$row['role_name'].'</p>
+                        <p>Status : '.$status.'</p>
+                        <p>Last Login: '.$row['last_login'].'</p>
+                        <p>Created : '.$row['created'].'</p>
+                        <p>Modified : '.$row['modified'].'</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>';
+
+        return $feedback;
+    }
+
+
     /*---------End------*/
 
 	public function Select_Area_With_State_With_Country()

@@ -391,10 +391,11 @@ class Backdoor extends CI_Controller
 
 
 
-    public function adb_strategy_program()
+    public function admin_details()
     {
+        $data['title']="Admin Details";
         $this->load->view('includes/admin_header');
-        $this->load->view('adb_strategy_prog');
+        $this->load->view('admin_details');
         $this->load->view('includes/admin_footer');
     }
 

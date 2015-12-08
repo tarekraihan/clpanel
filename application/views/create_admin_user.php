@@ -161,36 +161,43 @@ if(isset($_GET['role_id']))
                                 <thead>
                                 <tr>
                                     <th>SL No</th>
-                                    <th>Role Name</th>
+                                    <th>Admin Name</th>
+                                    <th>Role</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
                                     <th>Created</th>
                                     <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Details</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <?php
-                                $this->common_model->order_column = 'role_id';
-                                $this->common_model->table_name = 'admin_user_role';
-                                $query=$this->common_model->select_all();
+                                $query=$this->select_model->Select_User();
+
                                 $sl=1;
                                 foreach ($query->result() as $row)
                                 {
-                                    ?>
+                                    if($row->status == 1){
+                                        $status = '<i class="glyphicon glyphicon-ok green  ">';
+                                    }else{
+                                        $status = '<i class="glyphicon glyphicon-remove red ">';
+                                    }
+                                ?>
                                     <tr class="odd gradeX">
-                                        <td><?php echo $sl; ?></td>
+                                        <td class="text-center"><?php echo $sl; ?></td>
+                                        <td class="center"><?php echo $row->admin_first_name.' '.$row->admin_last_name;?></td>
                                         <td class="center"><?php echo $row->role_name;?></td>
+                                        <td class="center"><?php echo $row->admin_phone;?></td>
+                                        <td class="text-center"><?php echo $status;?></td>
                                         <td class="center"><?php echo $row->created;?></td>
-                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user_role?id=<?php echo $row->role_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
-                                        <td class="center text-center"><a href="?role_id=<?php echo $row->role_id;?>" onclick="return confirm('Are you really want to delete this item')"><i class="glyphicon glyphicon-remove red "></a></td>
-
+                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user_role?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
+                                        <td class="center text-center"><a href="?user_id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
                                     </tr>
                                     <?php
                                     $sl++;
                                 }
                                 ?>
-
-
                                 </tbody>
                             </table>
                         </div>
