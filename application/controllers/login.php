@@ -35,6 +35,7 @@ class Login extends CI_Controller
                 $sdata['admin_last_name']=$result->admin_last_name;
                 $sdata['admin_email']=$result->admin_email;
                 $sdata['admin_role']=$result->admin_role;
+                $sdata['profile_picture']=$result->profile_picture;
                 $sdata['current_password']=$result->current_password;
                 $this->session->set_userdata($sdata);
                 redirect('backdoor/dashboard');
