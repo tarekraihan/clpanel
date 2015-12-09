@@ -144,7 +144,8 @@ class Common_Model extends CI_Model
     # Use to insert data in a table
     public function insert()
     {
-
+       /* print_r($this->data);
+        die;*/
         $this->db->set($this->data);
         $this->db->insert($this->table_name);
         return $this->db->insert_id();

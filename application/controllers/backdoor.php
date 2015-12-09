@@ -392,12 +392,115 @@ class Backdoor extends CI_Controller
 
 
     public function admin_details()
-    {
-        $data['title']="Admin Details";
-        $this->load->view('includes/admin_header');
-        $this->load->view('admin_details');
-        $this->load->view('includes/admin_footer');
+    {   if(!$this->session->userdata('admin_email'))
+        {
+        redirect('backdoor');
+        }else {
+            $data['admin_id']=$this->uri->segment(3);
+            $data['title'] = "Admin Details";
+            $this->load->view('includes/admin_header',$data);
+            $this->load->view('admin_details');
+            $this->load->view('includes/admin_footer');
+        }
     }
+
+    public function vehicle_category($msg='')
+    {
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Save !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
+            }
+            $this->form_validation->set_rules('txtVehicleCategory','Vehicle Category','trim|required|min_length[2]|max_length[25]|xss_clean');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Create Vehicle Category";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('vehicle_category');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data=array(
+                    'name'=>htmlentities($this->input->post('txtVehicleCategory')),
+                    'remarks'=>htmlentities($this->input->post('txtRemarks')),
+                    'created_by'=> $this->session->userdata('admin_user_id'),
+                    'created'=>$date,
+                );
+
+                $this->common_model->table_name='tbl_category';
+                $result=$this->common_model->insert();
+
+                if($result)
+                {
+                    redirect('backdoor/vehicle_category/success');
+                }
+                else
+                {
+                    redirect('backdoor/vehicle_category/error');
+                }
+
+            }
+        }
+
+    }
+
+    public function edit_vehicle_category($msg='')
+    {
+        if(!$this->session->userdata('admin_email')){
+            redirect('backdoor');
+        }else{
+
+            if($msg == 'success'){
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Update !!</div>';
+            }else if($msg == 'error')
+            {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Update !!</div>';
+            }
+            $this->form_validation->set_rules('txtVehicleCategory','Vehicle Category','trim|required|min_length[2]|max_length[25]|xss_clean');
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $data['title']="Create Vehicle Category";
+                $this->load->view('includes/admin_header',$data);
+                $this->load->view('edit_vehicle_category');
+                $this->load->view('includes/admin_footer');
+            }else
+            {
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data=array(
+                    'name'=>htmlentities($this->input->post('txtVehicleCategory')),
+                    'remarks'=>htmlentities($this->input->post('txtRemarks')),
+                    'modified'=>$date,
+                );
+
+                $this->common_model->table_name='tbl_category';
+                $this->common_model->where=array('category_id'=>$this->input->post('txtVehicleCategoryId'));
+                $result=$this->common_model->update();
+
+               /* $this->common_model->table_name='tbl_category';
+                $result=$this->common_model->insert();*/
+
+                if($result)
+                {
+                    redirect('backdoor/edit_vehicle_category/success');
+                }
+                else
+                {
+                    redirect('backdoor/edit_vehicle_category/error');
+                }
+
+            }
+        }
+
+    }
+
 
     public function five_years_plan()
     {

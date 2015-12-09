@@ -37,41 +37,37 @@ class Select_Model extends CI_Model
 
     function Select_Single_Employee_Info($admin_id)
     {
-        $query="SELECT a.admin_user_id,a.admin_first_name,a.admin_last_name,a.admin_email,a.admin_address,a.admin_phone,a.status,a.last_login,a.profile_picture,a.created,a.modified,b.role_name FROM tst_admin_user AS a INNER JOIN admin_user_role AS b ON a.admin_role=b.role_id admin_user_id='$admin_id'";
+        $query="SELECT a.`admin_user_id`,a.admin_first_name,a.admin_last_name,a.admin_email,a.admin_address,a.admin_phone,a.status,a.last_login,a.profile_picture,a.created,a.modified,b.role_name FROM tst_admin_user AS a INNER JOIN admin_user_role AS b ON a.admin_role=b.role_id WHERE a.admin_user_id=$admin_id";
         $result=mysql_query($query);
         $row=mysql_fetch_array($result);
+       /* print_r($row);
+        die*/;
         //$date_of_birth=date('d-m-Y',strtotime($row['created']));
         //$date_of_joining=date('d-m-Y',strtotime($row[7]));
-        if($row['status']== 1){
+        if($row['status'] == 1){
             $status= "Active";
         }else{
             $status= "Inactive";
         }
-        $feedback='<div class="row mtop" id="employee_details">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="row">
-                <div class="col-md-3">
 
-                    <img width="150" height="187" src="'.base_url().'resource/images/amdin/'.$row['profile_picture'].'"  />
+        $feedback='<div class="col-md-2">
+                <div class="left-div">
+                    <img style="width:70%; height: auto; margin-left: 5%;" src="'.base_url().'resource/images/admin/'.$row['profile_picture'].'" alt="'.$row['admin_first_name'].'" />
                 </div>
- <div class="col-md-9">
-                    <p class="header_text">Personal Info</p>
-                    <div class="details">
-                        <p>Name : '.$row['admin_first_name'].' '.$row['admin_last_name'] .'</p>
-                        <p>Email Address :'.$row['admin_email'].'</p>
-                        <p>Phone :'.$row['admin_phone'].'</p>
-                        <p>User Role : '.$row['role_name'].'</p>
-                        <p>Status : '.$status.'</p>
-                        <p>Last Login: '.$row['last_login'].'</p>
-                        <p>Created : '.$row['created'].'</p>
-                        <p>Modified : '.$row['modified'].'</p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </div>';
-
+            <div class="col-md-10">
+                <div class="right-div">
+                    <div class="heading-div">Personal Info</div>
+                    <p>Name : '.$row['admin_first_name'].' '.$row['admin_last_name'] .'</p>
+                    <p>Email Address : '.$row['admin_email'].'</p>
+                    <p>Phone : '.$row['admin_phone'].'</p>
+                    <p>User Role : '.$row['role_name'].'</p>
+                    <p>Status : '.$status.'</p>
+                    <p>Last Login: '.$row['last_login'].'</p>
+                    <p>Created : '.$row['created'].'</p>
+                    <p>Modified : '.$row['modified'].'</p>
+                </div>
+            </div>';
         return $feedback;
     }
 

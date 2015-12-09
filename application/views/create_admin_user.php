@@ -192,7 +192,7 @@ if(isset($_GET['role_id']))
                                         <td class="text-center"><?php echo $status;?></td>
                                         <td class="center"><?php echo $row->created;?></td>
                                         <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user_role?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
-                                        <td class="center text-center"><a href="?user_id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
+                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/admin_details/<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
                                     </tr>
                                     <?php
                                     $sl++;

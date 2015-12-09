@@ -94,9 +94,6 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                         <li>
                             <a href="<?php echo base_url(); ?>backdoor/admin_user/">Create User</a>
                         </li>
-                        <li>
-                            <a href="<?php echo base_url(); ?>backdoor/admin_details/">Admin Details</a>
-                        </li>
                     </ul>
                 </li>
 
@@ -110,9 +107,8 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
                             <a href="<?php echo base_url(); ?>backdoor/model/">Car Model</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url(); ?>backdoor/admin_list/">Admin List</a>
+                            <a href="<?php echo base_url(); ?>backdoor/vehicle_category/">Vehicle Category</a>
                         </li>
-
 
                     </ul>
                 </li>
