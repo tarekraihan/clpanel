@@ -10,7 +10,7 @@ class Select_Model extends CI_Model
     {
         $query="SELECT * FROM $table_name";
         $result=mysql_query($query);
-        $option="<option value='0'>Select Designation</option>";
+        $option="<option value='0'>Select One</option>";
         while($data=mysql_fetch_array($result))
         {
             $option.='<option value="'.$data[0].'">'.$data[1].'</option>';

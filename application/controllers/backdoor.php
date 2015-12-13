@@ -470,7 +470,7 @@ class Backdoor extends CI_Controller
             if ($this->form_validation->run() == FALSE) {
                 $data['title'] = "Create Admin User";
                 $this->load->view('includes/admin_header', $data);
-                $this->load->view('create_admin_user');
+                $this->load->view('create_product');
                 $this->load->view('includes/admin_footer');
             } else {
                 $upload_result = $this->do_upload('./resource/images/admin/', 'txtProfilePicture');
@@ -500,6 +500,22 @@ class Backdoor extends CI_Controller
 
             }
         }
+
+    }
+    function get_model(){
+        $make_id=$this->input->post('make_id');
+        //$query = $this->db->query("SELECT * FROM tbl_states WHERE country_id=".$country_id);
+
+        $this->common_model->order_column = 'model_id';
+        $this->common_model->table_name = 'tbl_model';
+        $this->common_model->where = array('make_id'=>$make_id);
+        $query=$this->common_model->select_all();
+
+        $option = "<option value=''> Select One</option>";
+        foreach($query->result() as $model){
+            $option .= "<option value='".$model->model_id."'>".$model->model_name."</option>";
+        }
+        echo $option;
 
     }
 
