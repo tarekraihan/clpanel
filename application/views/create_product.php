@@ -8,28 +8,7 @@ if(isset($_GET['role_id']))
     $this->delete_model->Delete_Single_Row($id,$table,$id_field);
 }
 ?>
-<script type="text/javascript" src="<?php echo base_url();?>//resource/js/jquery-1.11.3.min.js"></script>
-<script>
 
-    $(document).ready(function(){
-        //alert("hhis");
-        $("#txtMakeId").change(function(){
-            var make=$("#txtMakeId").val();
-            //alert(company_id);
-            $.ajax({
-                type:"POST",
-                url:"<?php echo base_url();?>backdoor/get_model/",
-                data:{make_id:make},
-                success: function(response){
-                    // alert(response);
-                    $("#txtModel").html(response);
-                }
-            })
-        });
-    });
-
-
-</script>
 
 <div id="page-wrapper">
     <div id="page-inner">
@@ -74,12 +53,24 @@ if(isset($_GET['role_id']))
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="red"><?php echo form_error('txtFirstName');?></label>
+                            <label class="red"><?php echo form_error('txtModel');?></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Vehicle Category</label>
+                            <select name="txtCategory" id="txtCategory" class="form-control">
+                                <?php
+                                echo $this->select_model->Select_box($table='tbl_category');
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="red"><?php echo form_error('txtCategory');?></label>
                         </div>
 
                         <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" class="form-control" name="txtLastName" placeholder="Enter Last Name" required="required"/>
+                            <input type="text" class="form-control"  name="txtYear" placeholder="Select Year" required="required"/>
+
                         </div>
                         <div class="form-group">
                             <label class="red"><?php echo form_error('txtLastName');?></label>

@@ -15,14 +15,14 @@
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 
-
+<!--
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
-    <script type="text/javascript" src="<?php echo base_url(); ?>resource/tinymce/tinymce.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php /*echo base_url(); */?>resource/tinymce/tinymce.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
 
-    <script type="text/javascript">
+   <!-- <script type="text/javascript">
         tinymce.init({
             selector: "#mytextarea,#economicscenerio",
             theme: "modern",
@@ -44,13 +44,10 @@
                 {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
             ]
         });
-    </script>
-
+    </script>-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script>
-        $(function () {
-            $("#datepicker01").datepicker();
-            $("#datepicker02").datepicker();
-        });
+
     </script>
 </head>
 <body>
