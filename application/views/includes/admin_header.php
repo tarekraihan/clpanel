@@ -44,7 +44,11 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
         <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
                 <li class="text-center">
+                    <?php if(!$this->session->userdata('admin_email')){?>
                     <img src="<?php echo base_url(); ?>resource/assets/img/find_user.png" class="user-image img-responsive"/>
+                    <?php }else{?>
+                    <img src="<?php echo base_url(); ?>resource/images/admin/<?php echo $this->session->userdata('profile_picture');?>" class="user-image img-responsive"/>
+                    <?php } ?>
                 </li>
 
 

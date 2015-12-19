@@ -47,7 +47,7 @@
     });
 
     $(function() {
-        //$( "#datepicker" ).datepicker();
+        $( "#expire_date" ).datepicker();
 
 
     });

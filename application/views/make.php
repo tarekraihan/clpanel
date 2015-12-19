@@ -21,7 +21,6 @@ if(isset($_GET['make_id']))
         <hr/>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-6 ">
-                <div class="form" >
                         <div class="box-content"  >
                             <?php
                             //-----Display Success or Error message---

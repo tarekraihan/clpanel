@@ -22,218 +22,363 @@ if(isset($_GET['role_id']))
         <hr/>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-6 ">
-                <div class="form" >
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class="box-content"  >
-                            <?php
-                            //-----Display Success or Error message---
-                            if(isset($feedback)){
-                                echo $feedback;
-                            }
-                            ?>
-                        </div>
+                <div class="box-content"  >
+                    <?php
+                    //-----Display Success or Error message---
+                    if(isset($feedback)){
+                        echo $feedback;
+                    }
+                    //----Form Tag Start-------------
+                    $attributes = array('class' => 'email', 'id' => 'myform');
+                    echo form_open_multipart('upload/do_upload');
+                    ?>
+                </div>
 
-                        <div class="form-group">
-                            <label>Manufacturar Name</label>
-                            <select name="txtMakeId" id="txtMakeId" class="form-control">
+                <div class="form-group">
+                    <label>Manufacturar Name</label>
+                    <select name="txtMakeId" id="txtMakeId" class="form-control">
+                        <?php
+                        echo $this->select_model->Select_box($table='tbl_make');
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtMakeId');?></label>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Model Name</label>
+                    <select name="txtModel" id="txtModel" class="form-control">
+                        <option>Select One</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtModel');?></label>
+                </div>
+                <div class="form-group">
+                    <label>Vehicle Category</label>
+                    <select name="txtCategory" id="txtCategory" class="form-control">
+                        <?php
+                        echo $this->select_model->Select_box($table='tbl_category');
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtCategory');?></label>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="manufactureYear">Manufacture Year</label>
+                            <select name="manufactureYear" class="form-control" >
                                 <?php
-                                echo $this->select_model->Select_box($table='tbl_make');
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtMakeId');?></label>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label>Model Name</label>
-                            <select name="txtModel" id="txtModel" class="form-control">
-                                <option>Select One</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtModel');?></label>
-                        </div>
-                        <div class="form-group">
-                            <label>Vehicle Category</label>
-                            <select name="txtCategory" id="txtCategory" class="form-control">
-                                <?php
-                                echo $this->select_model->Select_box($table='tbl_category');
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtCategory');?></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" class="form-control"  name="txtYear" placeholder="Select Year" required="required"/>
-
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtLastName');?></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" class="form-control" name="txtEmailAddress" placeholder="Enter Email Address" required="required"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtEmailAddress');?></label>
-                        </div>
-
-                        <div class="form-group">
-
-                            <label>Address</label>
-                            <textarea class="form-control" rows="3" name="txtAddress" placeholder="Enter Address" required="required"></textarea>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtAddress');?></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Phone No</label>
-                            <input type="tel" class="form-control" name="txtPhone" placeholder="Enter Phone no" required="required"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtPhone');?></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="txtPassword" placeholder="Enter Password" required="required"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtPassword');?></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Re Password</label>
-                            <input type="password" class="form-control" name="txtRePassword" placeholder="Enter Re Password" required="required"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtRePassword');?></label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Admin Role</label>
-
-                            <select pattern="[0-9]{1,3}"  name="txtAdminRole" id="txtAdminRole" data-rel="chosen" class="form-control">
-                                <option value="">Select Admin Role</option>
-                                <?php
-                                $this->common_model->order_column = 'role_id';
-                                $this->common_model->table_name = 'admin_user_role';
-                                $query=$this->common_model->select_all();
-                                foreach ($query->result() as $row)
+                                $y= date("Y")+1;
+                                for ($i = 0;$i < 50;$i++)
                                 {
-                                    ?>
-                                    <option value="<?php echo $row->role_id;?>"><?php echo $row->role_name;?></option>
-                                <?php
-
+                                    $y -=1;
+                                    echo "<option value='$y'>$y</option>";
                                 }
                                 ?>
 
                             </select>
-
                         </div>
-
-                        <div class="form-group">
-                            <label>Profile Picture</label>
-                            <input type="file" class="form-control" name="txtProfilePicture" placeholder="Select Profile Picture" required="required"/>
+                        <div class="col-xs-6">
+                            <label for="manufactureMonth">Manufacture Month</label>
+                            <select name="manufactureMonth" class="form-control" >
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtProfilePicture');?></label>
-                        </div>
-
-                        <div class="checkbox">
-                            <label><input name="txtIsActive" type="checkbox"> IsActive</label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>User Name</label>
-                            <?php
-                            $data = array(
-                                'name'        => 'username',
-                                'id'          => 'username',
-                                'maxlength'   => '100',
-                                'size'        => '50',
-                                'class'       => 'form-control',
-                            );
-
-                            echo form_input($data);
-                            ?>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('username');?></label>
-                        </div>
-
-
-                        <input type="submit" name="btnSubmit" class="btn btn-danger" id="admin_user_role">
-                    </form>
+                    </div>
                 </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('manufactureMonth');?></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <?php
+                    $attributes=array(
+                    'name'=>'txtPrice',
+                    'class'=>'form-control',
+                    'maxlength'   => '12',
+                    'placeholder'=>'Write Vehicle Price',
+                    'value' => set_value('txtPrice'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtPrice');?></label>
+                </div>
+
+                <div class="form-group">
+
+                    <label>Displacement</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtDisplacement',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Displacement',
+                        'value' => set_value('txtDisplacement'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtDisplacement');?></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Steering</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtSteering',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Steering type',
+                        'value' => set_value('txtSteering'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtSteering');?></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Condition</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtCondition',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Vehicle Condition',
+                        'value' => set_value('txtCondition'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtCondition');?></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Made in</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtMadeIn',
+                        'class'=>'form-control',
+                        'maxlength'   => '25',
+                        'placeholder'=>'Write Vehicle Made in',
+                        'value' => set_value('txtMadeIn'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtMadeIn');?></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Fuel</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtFuel',
+                        'class'=>'form-control',
+                        'maxlength'   => '25',
+                        'placeholder'=>'Fuel used',
+                        'value' => set_value('txtFuel'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtFuel');?></label>
+                </div>
+                <
             </div>
-
             <div class="col-md-6 col-sm-12 col-xs-6 ">
-                <!-- Advanced Tables -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Admin Role List
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                <tr>
-                                    <th>SL No</th>
-                                    <th>Admin Name</th>
-                                    <th>Role</th>
-                                    <th>Phone</th>
-                                    <th>Status</th>
-                                    <th>Created</th>
-                                    <th>Edit</th>
-                                    <th>Details</th>
-                                </tr>
-                                </thead>
-                                <tbody>
 
-                                <?php
-                                $query=$this->select_model->Select_User();
-
-                                $sl=1;
-                                foreach ($query->result() as $row)
-                                {
-                                    if($row->status == 1){
-                                        $status = '<i class="glyphicon glyphicon-ok green  ">';
-                                    }else{
-                                        $status = '<i class="glyphicon glyphicon-remove red ">';
-                                    }
-                                    ?>
-                                    <tr class="odd gradeX">
-                                        <td class="text-center"><?php echo $sl; ?></td>
-                                        <td class="center"><?php echo $row->admin_first_name.' '.$row->admin_last_name;?></td>
-                                        <td class="center"><?php echo $row->role_name;?></td>
-                                        <td class="center"><?php echo $row->admin_phone;?></td>
-                                        <td class="text-center"><?php echo $status;?></td>
-                                        <td class="center"><?php echo $row->created;?></td>
-                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user_role?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
-                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/admin_details/<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
-                                    </tr>
-                                    <?php
-                                    $sl++;
-                                }
-                                ?>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
+                <div class="form-group">
+                    <label>Body Style</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtBodyStyle',
+                        'class'=>'form-control',
+                        'maxlength'   => '25',
+                        'placeholder'=>'Body Style',
+                        'value' => set_value('txtBodyStyle'),
+                    );
+                    echo form_input($attributes);
+                    ?>
                 </div>
-                <!--End Advanced Tables -->
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtBodyStyle');?></label>
+                </div>
+
+                <div class="form-group">
+                    <label>Doors</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtDoor',
+                        'class'=>'form-control',
+                        'maxlength'   => '2',
+                        'placeholder'=>'Number of doors',
+                        'value' => set_value('txtDoor'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtDoor');?></label>
+                </div>
+
+                <div class="form-group">
+                    <?php
+                    echo form_label('Number of passenger', 'txtPassenger');
+                    $attributes=array(
+                        'name'=>'txtPassenger',
+                        'class'=>'form-control',
+                        'maxlength'   => '2',
+                        'placeholder'=>'Number of passenger',
+                        'value' => set_value('txtPassenger'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtPassenger');?></label>
+                </div>
+
+                <div class="form-group">
+                    <?php
+                    echo form_label('Exterior Color', 'txtExterior');
+                    $attributes=array(
+                        'name'=>'txtExterior',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Exterior Color',
+                        'value' => set_value('txtExterior'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtExterior');?></label>
+
+                </div>
+
+                <div class="form-group">
+                    <?php
+                    echo form_label('Interior Color', 'txtInterior');
+                    $attributes=array(
+                        'name'=>'txtInterior',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Interior Color',
+                        'value' => set_value('txtInterior'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtInterior');?></label>
+                </div>
+                <div class="form-group">
+                    <?php
+                    echo form_label('Expire Date', 'txtExpireDate');
+                    $attributes=array(
+                        'name'=>'txtExpireDate',
+                        'id'=>'expire_date',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Expire Date',
+                        'value' => set_value('txtExpireDate'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtExpireDate');?></label>
+                </div>
+                <div class="form-group">
+                    <?php
+                    echo form_label('Reference Number', 'txtReferenceNo');
+                    $attributes=array(
+                        'name'=>'txtReferenceNo',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Reference Number',
+                        'value' => set_value('txtReferenceNo'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtReferenceNo');?></label>
+                </div>
+
+                <div class="form-group">
+
+                    <?php
+                    echo form_label('Options', 'txtOptions');
+                    $attributes=array(
+                        'name'=>'txtOptions',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'placeholder'=>'Write Options',
+                        'value' => set_value('txtOptions'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtOptions');?></label>
+                </div>
+
+                <div class="checkbox">
+                    <label><input name="txtIsAvailable" type="checkbox"> IsAvailable</label>
+                </div>
+
+                <div class="form-group">
+
+                    <?php
+                    echo form_label('Vehicle Image', 'txtImages');
+                    $attributes=array(
+                        'name'=>'txtImages',
+                        'class'=>'form-control',
+                        'maxlength'   => '50',
+                        'multiple'=>true,
+                        'placeholder'=>'Write Options',
+                        'value' => set_value('txtImages'),
+                    );
+                    echo form_upload($attributes);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtImages');?></label>
+                </div>
+
+                <input type="submit" name="btnSubmit" class="btn btn-danger" id="admin_user_role">
+                <?php echo form_close();?>
             </div>
         </div>
     </div>
