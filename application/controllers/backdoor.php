@@ -79,7 +79,6 @@ class Backdoor extends CI_Controller
         return (!preg_match("/^([+0-9])+$/i", $str)) ? FALSE : TRUE;
     }
 
-
     public function edit_admin_user_role($msg = '')
     {
         if (!$this->session->userdata('admin_email')) {
@@ -266,7 +265,6 @@ class Backdoor extends CI_Controller
 
     }
 
-
     public function model($msg = '')
     {
         if (!$this->session->userdata('admin_email')) {
@@ -348,7 +346,6 @@ class Backdoor extends CI_Controller
         }
 
     }
-
 
     public function admin_details()
     {
@@ -502,6 +499,7 @@ class Backdoor extends CI_Controller
         }
 
     }
+
     function get_model(){
         $make_id=$this->input->post('make_id');
         //$query = $this->db->query("SELECT * FROM tbl_states WHERE country_id=".$country_id);

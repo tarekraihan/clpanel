@@ -1,40 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="207cd666-ce48-4076-b3d0-adf0f230d9ae" name="Default" comment="Create Product">
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\adb_business_plan.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\adb_fact_sheet.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\adb_strategy_prog.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\admin_details.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\blank.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\blog_post.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\country_info.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\development_initiative.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\economic_scenarios.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\five_years_plan.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\form.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\tab-panel.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\table.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\ui.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\application\views\welcome_message.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.abide.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.accordion.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.alert.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.clearing.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.dropdown.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.equalizer.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.interchange.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.joyride.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.magellan.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.offcanvas.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.orbit.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.reveal.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.slider.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.tab.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.tooltip.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\xampp\htdocs\git\clpanel\resource\js\foundation\foundation.topbar.js" afterPath="" />
+    <list default="true" id="207cd666-ce48-4076-b3d0-adf0f230d9ae" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/includes/admin_header.php" afterPath="$PROJECT_DIR$/application/views/includes/admin_header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/backdoor.php" afterPath="$PROJECT_DIR$/application/controllers/backdoor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/index.php" afterPath="$PROJECT_DIR$/application/views/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="clpanel.iws" />
@@ -65,7 +35,56 @@
     <favorites_list name="clpanel" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="backdoor.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/backdoor.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-28.16" vertical-offset="0" max-vertical-offset="848">
+              <caret line="501" column="0" selection-start-line="501" selection-start-column="0" selection-end-line="501" selection-end-column="0" />
+              <folding>
+                <element signature="e#536#783#0#PHP" expanded="false" />
+                <element signature="e#789#1157#0#PHP" expanded="false" />
+                <element signature="e#1163#2672#0#PHP" expanded="false" />
+                <element signature="e#2678#2797#0#PHP" expanded="false" />
+                <element signature="e#2803#2911#0#PHP" expanded="false" />
+                <element signature="e#2917#4524#0#PHP" expanded="false" />
+                <element signature="e#4530#7915#0#PHP" expanded="false" />
+                <element signature="e#7921#8403#0#PHP" expanded="false" />
+                <element signature="e#8409#9972#0#PHP" expanded="false" />
+                <element signature="e#9978#11634#0#PHP" expanded="false" />
+                <element signature="e#11640#13256#0#PHP" expanded="false" />
+                <element signature="e#13262#15153#0#PHP" expanded="false" />
+                <element signature="e#15159#15588#0#PHP" expanded="false" />
+                <element signature="e#15594#17297#0#PHP" expanded="false" />
+                <element signature="e#17303#19189#0#PHP" expanded="false" />
+                <element signature="e#19195#22581#0#PHP" expanded="false" />
+                <element signature="e#22587#23217#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_header.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/includes/admin_header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.68" vertical-offset="261" max-vertical-offset="1504">
+              <caret line="33" column="174" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="174" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5289256" vertical-offset="480" max-vertical-offset="2704">
+              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -96,12 +115,13 @@
         <option value="$PROJECT_DIR$/application/views/vehicle_category.php" />
         <option value="$PROJECT_DIR$/application/controllers/login.php" />
         <option value="$PROJECT_DIR$/application/models/select_model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/backdoor.php" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/application/views/includes/admin_header.php" />
         <option value="$PROJECT_DIR$/resource/assets/js/custom.js" />
         <option value="$PROJECT_DIR$/application/views/includes/admin_footer.php" />
         <option value="$PROJECT_DIR$/application/views/create_product.php" />
+        <option value="$PROJECT_DIR$/application/controllers/backdoor.php" />
+        <option value="$PROJECT_DIR$/application/views/includes/admin_header.php" />
+        <option value="$PROJECT_DIR$/application/views/index.php" />
       </list>
     </option>
   </component>
@@ -180,11 +200,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -198,11 +214,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
+              <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,20 +303,27 @@
       <option name="project" value="LOCAL" />
       <updated>1450041674616</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Delete unnecessary file">
+      <created>1450621675911</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1450621675911</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777232" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21086262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21086262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32973504" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -309,7 +332,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -335,10 +357,13 @@
     </option>
     <MESSAGE value="Admin details" />
     <MESSAGE value="Create Product" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Product" />
+    <MESSAGE value="Delete unnecessary file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete unnecessary file" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -573,13 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/backdoor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8405" max-vertical-offset="8959">
-          <caret line="503" column="5" selection-start-line="503" selection-start-column="5" selection-end-line="503" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="748" max-vertical-offset="2295">
@@ -647,18 +665,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/includes/admin_header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6565445" vertical-offset="1571" max-vertical-offset="3632">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/includes/admin_footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.76859504" vertical-offset="40" max-vertical-offset="1008">
           <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/includes/admin_header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.68" vertical-offset="261" max-vertical-offset="1504">
+          <caret line="33" column="174" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="174" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/backdoor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.16" vertical-offset="0" max-vertical-offset="848">
+          <caret line="501" column="0" selection-start-line="501" selection-start-column="0" selection-end-line="501" selection-end-column="0" />
+          <folding>
+            <element signature="e#536#783#0#PHP" expanded="false" />
+            <element signature="e#789#1157#0#PHP" expanded="false" />
+            <element signature="e#1163#2672#0#PHP" expanded="false" />
+            <element signature="e#2678#2797#0#PHP" expanded="false" />
+            <element signature="e#2803#2911#0#PHP" expanded="false" />
+            <element signature="e#2917#4524#0#PHP" expanded="false" />
+            <element signature="e#4530#7915#0#PHP" expanded="false" />
+            <element signature="e#7921#8403#0#PHP" expanded="false" />
+            <element signature="e#8409#9972#0#PHP" expanded="false" />
+            <element signature="e#9978#11634#0#PHP" expanded="false" />
+            <element signature="e#11640#13256#0#PHP" expanded="false" />
+            <element signature="e#13262#15153#0#PHP" expanded="false" />
+            <element signature="e#15159#15588#0#PHP" expanded="false" />
+            <element signature="e#15594#17297#0#PHP" expanded="false" />
+            <element signature="e#17303#19189#0#PHP" expanded="false" />
+            <element signature="e#19195#22581#0#PHP" expanded="false" />
+            <element signature="e#22587#23217#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5289256" vertical-offset="480" max-vertical-offset="2704">
+          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
           <folding />
         </state>
       </provider>
