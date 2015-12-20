@@ -21,16 +21,21 @@ if(isset($_GET['role_id']))
         <!-- /. ROW  -->
         <hr/>
         <div class="row">
+            <div class="col-md-12">
+                <?php
+                //-----Display Success or Error message---
+                if(isset($feedback)){
+                    echo $feedback;
+                }
+                ?>
+            </div>
             <div class="col-md-6 col-sm-12 col-xs-6 ">
                 <div class="box-content"  >
                     <?php
-                    //-----Display Success or Error message---
-                    if(isset($feedback)){
-                        echo $feedback;
-                    }
+
                     //----Form Tag Start-------------
                     $attributes = array('class' => 'email', 'id' => 'myform');
-                    echo form_open_multipart('upload/do_upload');
+                    echo form_open_multipart('backdoor/create_product');
                     ?>
                 </div>
 
@@ -50,7 +55,7 @@ if(isset($_GET['role_id']))
                 <div class="form-group">
                     <label>Model Name</label>
                     <select name="txtModel" id="txtModel" class="form-control">
-                        <option>Select One</option>
+                        <option value="">Select One</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -211,7 +216,7 @@ if(isset($_GET['role_id']))
                 <div class="form-group">
                     <label class="red"><?php echo form_error('txtFuel');?></label>
                 </div>
-                <
+
             </div>
             <div class="col-md-6 col-sm-12 col-xs-6 ">
 
@@ -263,7 +268,20 @@ if(isset($_GET['role_id']))
                     ?>
                 </div>
                 <div class="form-group">
-                    <label class="red"><?php echo form_error('txtPassenger');?></label>
+                    <?php
+                    echo form_label('Dimension', 'txtDimension');
+                    $attributes=array(
+                        'name'=>'txtDimension',
+                        'class'=>'form-control',
+                        'maxlength'   => '15',
+                        'placeholder'=>'Dimension',
+                        'value' => set_value('txtDimension'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtDimension');?></label>
                 </div>
 
                 <div class="form-group">
@@ -307,7 +325,7 @@ if(isset($_GET['role_id']))
                         'name'=>'txtExpireDate',
                         'id'=>'expire_date',
                         'class'=>'form-control',
-                        'maxlength'   => '50',
+                        'maxlength'   => '10',
                         'placeholder'=>'Write Expire Date',
                         'value' => set_value('txtExpireDate'),
                     );
@@ -323,7 +341,7 @@ if(isset($_GET['role_id']))
                     $attributes=array(
                         'name'=>'txtReferenceNo',
                         'class'=>'form-control',
-                        'maxlength'   => '50',
+                        'maxlength'   => '25',
                         'placeholder'=>'Write Reference Number',
                         'value' => set_value('txtReferenceNo'),
                     );
@@ -365,7 +383,7 @@ if(isset($_GET['role_id']))
                         'name'=>'txtImages',
                         'class'=>'form-control',
                         'maxlength'   => '50',
-                        'multiple'=>true,
+                        //'multiple'=>true,
                         'placeholder'=>'Write Options',
                         'value' => set_value('txtImages'),
                     );

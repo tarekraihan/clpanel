@@ -20,6 +20,11 @@
  <!--MORRIS CHART SCRIPTS -->
 <script src="<?php echo base_url(); ?>resource/assets/js/morris/raphael-2.1.0.min.js"></script>
 <script src="<?php echo base_url(); ?>resource/assets/js/morris/morris.js"></script>
+
+<!-- DATA TABLE SCRIPTS -->
+<script src="<?php echo base_url(); ?>resource/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url();?>resource/assets/js/dataTables/dataTables.bootstrap.js"></script>
+
 <!-- CUSTOM SCRIPTS -->
 <script>
 
@@ -42,8 +47,8 @@
                 }
             })
         });
-
-
+        //-- Car List DataTable
+        $('#carList').dataTable();
     });
 
     $(function() {

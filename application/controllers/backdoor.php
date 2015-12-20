@@ -452,47 +452,72 @@ class Backdoor extends CI_Controller
         } else {
 
             if ($msg == 'success') {
-                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Save !!</div>';
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Save !!</div>';
             } else if ($msg == 'error') {
                 $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
             }
-            $this->form_validation->set_rules('txtFirstName', 'First Name', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
-            $this->form_validation->set_rules('username', 'username', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
-            $this->form_validation->set_rules('txtLastName', 'Last Name', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
-            $this->form_validation->set_rules('txtEmailAddress', 'Email Address', 'trim|valid_email|required|min_length[5]|max_length[80]|xss_clean|is_unique[tst_admin_user.admin_email]');
-            $this->form_validation->set_rules('txtAddress', 'Address', 'trim|required|min_length[5]|max_length[100]|xss_clean');
-            $this->form_validation->set_rules('txtPhone', 'Phone', 'trim|required|callback_phone_number|min_length[4]|max_length[15]|xss_clean');
-            $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|min_length[4]|max_length[15]|xss_clean|matches[txtRePassword]');
-            $this->form_validation->set_rules('txtRePassword', 'Re Password', 'trim|required|min_length[4]|max_length[15]');
+            $this->form_validation->set_rules('txtMakeId', 'Manufacture ', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('txtModel', 'Model', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('txtCategory', 'Category', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('manufactureYear', 'Manufacture Year', 'trim|required');
+            $this->form_validation->set_rules('manufactureMonth', 'Manufacture Month', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('txtPrice', 'Price', 'trim|required|min_length[2]|max_length[15]|xss_clean');
+            $this->form_validation->set_rules('txtDisplacement', 'Displacement', 'trim|min_length[4]|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('txtSteering', 'Steering', 'trim|min_length[4]|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('txtCondition', 'Condition', 'trim|min_length[4]|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('txtMadeIn', 'Made In', 'trim|min_length[4]|max_length[25]|xss_clean');
+            $this->form_validation->set_rules('txtFuel', 'Fuel', 'trim|min_length[2]|max_length[15]|xss_clean');
+            $this->form_validation->set_rules('txtBodyStyle', 'Body Style', 'trim|min_length[5]|max_length[25]|xss_clean');
+            $this->form_validation->set_rules('txtDoor', 'Door', 'trim|is_natural|xss_clean');
+            $this->form_validation->set_rules('txtPassenger', 'Passenger', 'trim|is_natural|xss_clean');
+            $this->form_validation->set_rules('txtDimension', 'Dimension', 'trim|xss_clean');
+            $this->form_validation->set_rules('txtExterior', 'Exterior', 'trim|min_length[4]|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('txtInterior', 'Interior', 'trim|min_length[4]|max_length[50]|xss_clean');
+            $this->form_validation->set_rules('txtExpireDate', 'Expire Date', 'trim|exact_length[10]|xss_clean');
+            $this->form_validation->set_rules('txtReferenceNo', 'Reference No', 'trim|min_length[4]|max_length[25]|xss_clean');
+            $this->form_validation->set_rules('txtOptions', 'Options', 'trim|min_length[4]|max_length[25]|xss_clean');
             if ($this->form_validation->run() == FALSE) {
-                $data['title'] = "Create Admin User";
+                $data['title'] = "Create Product";
                 $this->load->view('includes/admin_header', $data);
                 $this->load->view('create_product');
                 $this->load->view('includes/admin_footer');
             } else {
-                $upload_result = $this->do_upload('./resource/images/admin/', 'txtProfilePicture');
+                $upload_result = $this->do_upload('./resource/images/car/', 'txtImages');
                 /* print_r($upload_result);
                  die;*/
                 $date = date('Y-m-d h:i:s');
                 $this->common_model->data = array(
-                    'admin_first_name' => htmlentities($this->input->post('txtFirstName')),
-                    'admin_last_name' => htmlentities($this->input->post('txtLastName')),
-                    'admin_email' => htmlentities($this->input->post('txtEmailAddress')),
-                    'admin_address' => htmlentities($this->input->post('txtAddress')),
-                    'admin_phone' => $this->input->post('txtPhone'),
-                    'admin_role' => $this->input->post('txtAdminRole'),
-                    'current_password' => md5($this->input->post('txtPassword')),
-                    'status' => $this->input->post('txtIsActive'),
-                    'profile_picture' => $upload_result['file_name'],
+                    'make_id' =>$this->input->post('txtMakeId'),
+                    'model_id' =>$this->input->post('txtModel'),
+                    'category_id' =>$this->input->post('txtCategory'),
+                    'manufacture_year' => htmlentities($this->input->post('manufactureYear')),
+                    'manufacture_month' => htmlentities($this->input->post('manufactureMonth')),
+                    'desplacement' => htmlentities($this->input->post('txtSteering')),
+                    'condition' => htmlentities($this->input->post('txtCondition')),
+                    'steering' => htmlentities($this->input->post('txtDisplacement')),
+                    'price' => htmlentities($this->input->post('txtPrice')),
+                    'made_in' => htmlentities($this->input->post('txtMadeIn')),
+                    'fuel' => htmlentities($this->input->post('txtFuel')),
+                    'body_style' => htmlentities($this->input->post('txtBodyStyle')),
+                    'door' => htmlentities($this->input->post('txtDoor')),
+                    'no_of_passenger' => $this->input->post('txtPassenger'),
+                    'dimension' => htmlentities($this->input->post('txtDimension')),
+                    'exterior_color' => htmlentities($this->input->post('txtExterior')),
+                    'interior_color' => htmlentities($this->input->post('txtInterior')),
+                    'expiry_date' => date( "Y-m-d", strtotime($this->input->post('txtExpireDate'))),
+                    'reference_no' => htmlentities($this->input->post('txtReferenceNo')),
+                    'options' => htmlentities($this->input->post('txtOptions')),
+                    'status' => $this->input->post('txtIsAvailable'),
+                    'feature_image' => $upload_result['file_name'],
                     'created' => $date
                 );
-                $this->common_model->table_name = 'tst_admin_user';
+                $this->common_model->table_name = 'tbl_product';
                 $result = $this->common_model->insert();
 
                 if ($result) {
-                    redirect('backdoor/admin_user/success');
+                    redirect('backdoor/create_product/success');
                 } else {
-                    redirect('backdoor/admin_user/error');
+                    redirect('backdoor/create_product/error');
                 }
 
             }
@@ -516,5 +541,23 @@ class Backdoor extends CI_Controller
         echo $option;
 
     }
+
+    public function vehicle_list($msg=''){
+        if (!$this->session->userdata('admin_email')) {
+            redirect('backdoor');
+        } else {
+
+            if ($msg == 'success') {
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Save !!</div>';
+            } else if ($msg == 'error') {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
+            }
+
+                $data['title'] = "Vehicle List";
+                $this->load->view('includes/admin_header', $data);
+                $this->load->view('vehicle_list');
+                $this->load->view('includes/admin_footer');
+            }
+        }
 
 }//--End of Controller

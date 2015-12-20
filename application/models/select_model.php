@@ -27,6 +27,15 @@ class Select_Model extends CI_Model
 
     }
 
+    public function Select_Car_List()
+    {
+        $sql="SELECT tbl_product.product_id, tbl_product.price, tbl_product.feature_image,tbl_make.name,tbl_model.model_name FROM tbl_product INNER JOIN tbl_make ON tbl_product.make_id = tbl_make.make_id INNER JOIN tbl_model ON tbl_product.model_id = tbl_model.model_id";
+        $query=$this->db->query($sql);
+        return $query;
+
+    }
+
+
     public function Select_model()
     {
         $sql="SELECT a.model_id,a.model_name,a.created,b.name FROM tbl_model AS a INNER JOIN tbl_make AS b ON a.make_id=b.make_id ORDER BY a.model_id DESC";

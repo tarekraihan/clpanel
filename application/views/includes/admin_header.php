@@ -8,12 +8,17 @@
     <link href="<?php echo base_url(); ?>resource/assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- FONTAWESOME STYLES-->
     <link href="<?php echo base_url(); ?>resource/assets/css/font-awesome.css" rel="stylesheet"/>
+
+    <!-- DataTable-->
+    <link href="<?php echo base_url(); ?>resource/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
     <!-- MORRIS CHART STYLES-->
     <link href="<?php echo base_url(); ?>resource/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet"/>
     <!-- CUSTOM STYLES-->
     <link href="<?php echo base_url(); ?>resource/assets/css/custom.css" rel="stylesheet"/>
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+
 
 
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -83,6 +88,9 @@ font-size: 16px;">Welcome To TST Japan Admin Panel &nbsp; <a href="<?php echo ba
 
                         <li>
                             <a href="<?php echo base_url(); ?>backdoor/create_product/">Vehicle Information</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url(); ?>backdoor/vehicle_list/">Vehicle list</a>
                         </li>
 
                     </ul>
