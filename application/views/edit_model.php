@@ -35,7 +35,6 @@ if(isset($_GET['id']))
         <hr/>
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-4 ">
-                <div class="form" >
                         <div class="box-content"  >
                             <?php
                             //-----Display Success or Error message---
@@ -106,7 +105,7 @@ if(isset($_GET['id']))
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="car_model">
                                 <thead>
                                 <tr>
                                     <th>SL No</th>

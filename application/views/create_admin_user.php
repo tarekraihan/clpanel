@@ -155,7 +155,8 @@ if(isset($_GET['role_id']))
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTables-example">
+                            <div style="overflow-x:scroll;">
+                                 <table  class="table table-striped table-bordered table-hover " id="dataTables-example">
                                 <thead>
                                 <tr>
                                     <th>SL No</th>
@@ -198,6 +199,7 @@ if(isset($_GET['role_id']))
                                 ?>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
 
                     </div>

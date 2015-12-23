@@ -250,49 +250,51 @@ if(isset($_GET['id']))
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTables-example">
-                            <thead>
-                            <tr>
-                                <th>SL No</th>
-                                <th>Admin Name</th>
-                                <th>Role</th>
-                                <th>Phone</th>
-                                <th>Status</th>
-                                <th>Created</th>
-                                <th>Edit</th>
-                                <th>Details</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                        <div style="overflow-x:scroll;">
+                            <table  class="table table-striped table-bordered table-hover " id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Admin Name</th>
+                                    <th>Role</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Edit</th>
+                                    <th>Details</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                            <?php
-                            $query=$this->select_model->Select_User();
+                                <?php
+                                $query=$this->select_model->Select_User();
 
-                            $sl=1;
-                            foreach ($query->result() as $row)
-                            {
-                                if($row->status == 1){
-                                    $status = '<i class="glyphicon glyphicon-ok green  ">';
-                                }else{
-                                    $status = '<i class="glyphicon glyphicon-remove red ">';
+                                $sl=1;
+                                foreach ($query->result() as $row)
+                                {
+                                    if($row->status == 1){
+                                        $status = '<i class="glyphicon glyphicon-ok green  ">';
+                                    }else{
+                                        $status = '<i class="glyphicon glyphicon-remove red ">';
+                                    }
+                                    ?>
+                                    <tr class="odd gradeX">
+                                        <td class="text-center"><?php echo $sl; ?></td>
+                                        <td class="center"><?php echo $row->admin_first_name.' '.$row->admin_last_name;?></td>
+                                        <td class="center"><?php echo $row->role_name;?></td>
+                                        <td class="center"><?php echo $row->admin_phone;?></td>
+                                        <td class="text-center"><?php echo $status;?></td>
+                                        <td class="center"><?php echo $row->created;?></td>
+                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
+                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/admin_details/<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
+                                    </tr>
+                                    <?php
+                                    $sl++;
                                 }
                                 ?>
-                                <tr class="odd gradeX">
-                                    <td class="text-center"><?php echo $sl; ?></td>
-                                    <td class="center"><?php echo $row->admin_first_name.' '.$row->admin_last_name;?></td>
-                                    <td class="center"><?php echo $row->role_name;?></td>
-                                    <td class="center"><?php echo $row->admin_phone;?></td>
-                                    <td class="text-center"><?php echo $status;?></td>
-                                    <td class="center"><?php echo $row->created;?></td>
-                                    <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
-                                    <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/admin_details/<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
-                                </tr>
-                                <?php
-                                $sl++;
-                            }
-                            ?>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                 </div>

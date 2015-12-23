@@ -84,7 +84,7 @@ if(isset($_GET['model_id']))
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="car_model">
                                 <thead>
                                 <tr>
                                     <th>SL No</th>

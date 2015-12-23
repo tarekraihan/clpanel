@@ -49,6 +49,7 @@
         });
         //-- Car List DataTable
         $('#carList').dataTable();
+        $('#car_model').dataTable();
     });
 
     $(function() {
