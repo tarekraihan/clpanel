@@ -395,7 +395,7 @@ if(isset($_GET['role_id']))
                     <label class="red"><?php echo form_error('txtImages');?></label>
                 </div>
 
-                <input type="submit" name="btnSubmit" class="btn btn-danger" id="admin_user_role">
+                <input type="submit" name="btnSubmit" class="btn btn-danger">
                 <?php echo form_close();?>
             </div>
         </div>

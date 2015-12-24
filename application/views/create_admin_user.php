@@ -56,6 +56,25 @@ if(isset($_GET['role_id']))
                         </div>
 
                         <div class="form-group">
+                            <label>User Name</label>
+                            <?php
+                            $data = array(
+                                'name'        => 'username',
+                                'id'          => 'username',
+                                'maxlength'   => '100',
+                                'size'        => '50',
+                                'class'       => 'form-control',
+                            );
+
+                            echo form_input($data);
+                            ?>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="red"><?php echo form_error('username');?></label>
+                        </div>
+
+                        <div class="form-group">
 
                                 <label>Address</label>
                                 <textarea class="form-control" rows="3" name="txtAddress" placeholder="Enter Address" required="required"></textarea>
@@ -123,28 +142,7 @@ if(isset($_GET['role_id']))
                         <div class="checkbox">
                             <label><input name="txtIsActive" type="checkbox"> IsActive</label>
                         </div>
-
-                        <div class="form-group">
-                            <label>User Name</label>
-                            <?php
-                            $data = array(
-                                'name'        => 'username',
-                                'id'          => 'username',
-                                'maxlength'   => '100',
-                                'size'        => '50',
-                                'class'       => 'form-control',
-                            );
-
-                            echo form_input($data);
-                            ?>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('username');?></label>
-                        </div>
-
-
-                        <input type="submit" name="btnSubmit" class="btn btn-danger" id="admin_user_role">
+                        <input type="submit" name="btnSubmit" value="Save" class="btn btn-danger" >
                     </form>
                 </div>
             </div>
@@ -157,7 +155,7 @@ if(isset($_GET['role_id']))
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-bordered" id="dataTables-example">
                                 <thead>
                                 <tr>
                                     <th>SL No</th>
@@ -191,7 +189,7 @@ if(isset($_GET['role_id']))
                                         <td class="center"><?php echo $row->admin_phone;?></td>
                                         <td class="text-center"><?php echo $status;?></td>
                                         <td class="center"><?php echo $row->created;?></td>
-                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user_role?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
+                                        <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/edit_admin_user?id=<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-edit "></a></td>
                                         <td class="center text-center"><a href="<?php echo base_url(); ?>backdoor/admin_details/<?php echo $row->admin_user_id;?>"><i class="glyphicon glyphicon-plus green "></a></td>
                                     </tr>
                                     <?php

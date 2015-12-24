@@ -21,64 +21,64 @@ if(isset($_GET['make_id']))
         <hr/>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-6 ">
-                        <div class="box-content"  >
-                            <?php
-                            //-----Display Success or Error message---
-                            if(isset($feedback)){
-                                echo $feedback;
-                            }
-                            //----Form Tag Start-------------
-                            $attributes = array('class' => 'email', 'id' => 'myform');
+                <div class="box-content"  >
+                    <?php
+                    //-----Display Success or Error message---
+                    if(isset($feedback)){
+                        echo $feedback;
+                    }
+                    //----Form Tag Start-------------
+                    $attributes = array('class' => 'email', 'id' => 'myform');
 
-                            echo form_open('backdoor/make', $attributes);
-                            ?>
-                        </div>
-                        <div class="form-group">
-                            <label>Manufacturar Name</label>
-                            <?php
-                            $attributes=array(
-                                'name'=>'txtManufacturar',
-                                'class'=>'form-control',
-                                'maxlength'   => '40',
-                                'placeholder'=>'Write Manufacturar Name',
-                                'value' => set_value('txtManufacturar'),
-                            );
-                            echo form_input($attributes);
-                            ?>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtManufacturar');?></label>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label>Remarks</label>
-                            <?php
-                            $attributes=array(
-                                'name'=>'txtRemarks',
-                                'class'=>'form-control',
-                                'placeholder'=>'Write Remarks',
-                                'maxlength'   => '100',
-                                'value' => set_value('txtRemarks'),
-                            );
-                            echo form_input($attributes);
-                            ?>
-                        </div>
-                        <div class="form-group">
-                            <label class="red"><?php echo form_error('txtRemarks');?></label>
-                        </div>
-                        <?php
-                            $attribute=array(
-                                'name'=>'btnSubmit',
-                                'class'=>'btn btn-danger ',
-                                'value'=>'Submit',
-
-                            );
-                            echo form_submit($attribute);//--Form Submit Button
-                            echo form_close();//--Form closing tag </form>
-                        ?>
+                    echo form_open('backdoor/make', $attributes);
+                    ?>
                 </div>
+                <div class="form-group">
+                    <label>Manufacturar Name</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtManufacturar',
+                        'class'=>'form-control',
+                        'maxlength'   => '40',
+                        'placeholder'=>'Write Manufacturar Name',
+                        'value' => set_value('txtManufacturar'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtManufacturar');?></label>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Remarks</label>
+                    <?php
+                    $attributes=array(
+                        'name'=>'txtRemarks',
+                        'class'=>'form-control',
+                        'placeholder'=>'Write Remarks',
+                        'maxlength'   => '100',
+                        'value' => set_value('txtRemarks'),
+                    );
+                    echo form_input($attributes);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="red"><?php echo form_error('txtRemarks');?></label>
+                </div>
+                <?php
+                    $attribute=array(
+                        'name'=>'btnSubmit',
+                        'class'=>'btn btn-danger ',
+                        'value'=>'Submit',
+
+                    );
+                    echo form_submit($attribute);//--Form Submit Button
+                    echo form_close();//--Form closing tag </form>
+                ?>
             </div>
+
 
             <div class="col-md-6 col-sm-12 col-xs-6 ">
                 <!-- Advanced Tables -->

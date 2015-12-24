@@ -130,6 +130,7 @@ class Backdoor extends CI_Controller
             $this->form_validation->set_rules('username', 'username', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
             $this->form_validation->set_rules('txtLastName', 'Last Name', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
             $this->form_validation->set_rules('txtEmailAddress', 'Email Address', 'trim|valid_email|required|min_length[5]|max_length[80]|xss_clean|is_unique[tst_admin_user.admin_email]');
+            $this->form_validation->set_rules('username', 'User Name', 'trim|required|min_length[4]|max_length[15]|xss_clean|is_unique[tst_admin_user.username]');
             $this->form_validation->set_rules('txtAddress', 'Address', 'trim|required|min_length[5]|max_length[100]|xss_clean');
             $this->form_validation->set_rules('txtPhone', 'Phone', 'trim|required|callback_phone_number|min_length[4]|max_length[15]|xss_clean');
             $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|min_length[4]|max_length[15]|xss_clean|matches[txtRePassword]');
@@ -148,6 +149,7 @@ class Backdoor extends CI_Controller
                     'admin_first_name' => htmlentities($this->input->post('txtFirstName')),
                     'admin_last_name' => htmlentities($this->input->post('txtLastName')),
                     'admin_email' => htmlentities($this->input->post('txtEmailAddress')),
+                    'username' => htmlentities($this->input->post('username')),
                     'admin_address' => htmlentities($this->input->post('txtAddress')),
                     'admin_phone' => $this->input->post('txtPhone'),
                     'admin_role' => $this->input->post('txtAdminRole'),
@@ -163,6 +165,61 @@ class Backdoor extends CI_Controller
                     redirect('backdoor/admin_user/success');
                 } else {
                     redirect('backdoor/admin_user/error');
+                }
+
+            }
+        }
+
+    }
+
+    public function edit_admin_user($msg = '')
+    {
+        if (!$this->session->userdata('admin_email')) {
+            redirect('backdoor');
+        } else {
+
+            if ($msg == 'success') {
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Save !!</div>';
+            } else if ($msg == 'error') {
+                $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
+            }
+            $this->form_validation->set_rules('txtFirstName', 'First Name', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('username', 'username', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('txtLastName', 'Last Name', 'trim|required|callback_alpha_dash_space|min_length[3]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('txtEmailAddress', 'Email Address', 'trim|valid_email|required|min_length[5]|max_length[80]|xss_clean|is_unique[tst_admin_user.admin_email]');
+            $this->form_validation->set_rules('txtAddress', 'Address', 'trim|required|min_length[5]|max_length[100]|xss_clean');
+            $this->form_validation->set_rules('txtPhone', 'Phone', 'trim|required|callback_phone_number|min_length[4]|max_length[15]|xss_clean');
+            $this->form_validation->set_rules('txtPassword', 'Password', 'trim|required|min_length[4]|max_length[15]|xss_clean|matches[txtRePassword]');
+            $this->form_validation->set_rules('txtRePassword', 'Re Password', 'trim|required|min_length[4]|max_length[15]');
+            if ($this->form_validation->run() == FALSE) {
+                $data['title'] = "Create Admin User";
+                $this->load->view('includes/admin_header', $data);
+                $this->load->view('edit_admin_user');
+                $this->load->view('includes/admin_footer');
+            } else {
+                $upload_result = $this->do_upload('./resource/images/admin/', 'txtProfilePicture');
+                /* print_r($upload_result);
+                 die;*/
+                $date = date('Y-m-d h:i:s');
+                $this->common_model->data = array(
+                    'admin_first_name' => htmlentities($this->input->post('txtFirstName')),
+                    'admin_last_name' => htmlentities($this->input->post('txtLastName')),
+                    'admin_email' => htmlentities($this->input->post('txtEmailAddress')),
+                    'admin_address' => htmlentities($this->input->post('txtAddress')),
+                    'admin_phone' => $this->input->post('txtPhone'),
+                    'admin_role' => $this->input->post('txtAdminRole'),
+                    'current_password' => md5($this->input->post('txtPassword')),
+                    'status' => $this->input->post('txtIsActive'),
+                    'profile_picture' => $upload_result['file_name'],
+                    'modified' => $date
+                );
+                $this->common_model->table_name = 'tst_admin_user';
+                $this->common_model->where = array('admin_user_id' => $this->input->post('admin_user_id'));
+                $result = $this->common_model->update();
+                if ($result) {
+                    redirect('backdoor/edit_admin_user/success');
+                } else {
+                    redirect('backdoor/edit_admin_user/error');
                 }
 
             }
