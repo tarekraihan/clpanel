@@ -14,15 +14,17 @@ if(isset($_GET['id']))
     $table='tst_admin_user';
     $id_field='admin_user_id';
     $row=$this->select_model->Select_Single_Row($id,$table,$id_field);
-    /*print_r($row);
-        die;*/
+   /* print_r($row);
+    die;*/
 }else{
     $row['admin_user_id']='';
     $row['admin_first_name']='';
     $row['admin_last_name']='';
     $row['admin_email']='';
+    $row['username']='';
     $row['admin_address']='';
     $row['admin_phone']='';
+    $row['current_password']='';
 
 }
 ?>
@@ -55,7 +57,7 @@ if(isset($_GET['id']))
                         'class'=>'form-control',
                         'maxlength'   => '25',
                         'placeholder'=>'Enter First Name',
-                        'value' => set_value('txtFirstName'),
+                        'value' => $row['admin_first_name'],
                     );
                     echo form_input($attributes);
 
@@ -77,9 +79,9 @@ if(isset($_GET['id']))
                     $attributes=array(
                         'name'=>'txtLastName',
                         'class'=>'form-control',
-                        'maxlength'   => '25',
+                        'maxlength' => '25',
                         'placeholder'=>'Enter Last Name',
-                        'value' => set_value('txtLastName'),
+                        'value' => $row['admin_last_name'],
                     );
                     echo form_input($attributes);
                     ?>
@@ -96,7 +98,7 @@ if(isset($_GET['id']))
                         'class'=>'form-control',
                         'maxlength'   => '70',
                         'placeholder'=>'Enter Email Address',
-                        'value' => set_value('txtEmailAddress'),
+                        'value' =>$row['admin_email']
                     );
                     echo form_input($attributes);
                     ?>
@@ -113,7 +115,7 @@ if(isset($_GET['id']))
                         'class'=>'form-control',
                         'maxlength'   => '15',
                         'placeholder'=>'Enter User Name',
-                        'value' => set_value('username'),
+                        'value' => $row['username']
                     );
                     echo form_input($attributes);
                     ?>
@@ -130,7 +132,7 @@ if(isset($_GET['id']))
                         'class'=>'form-control',
                         'maxlength'   => '250',
                         'placeholder'=>'Write  Address',
-                        'value' => set_value('txtAddress'),
+                        'value' => $row['admin_address']
                     );
                     echo form_textarea($attributes);
                     ?>
@@ -148,7 +150,7 @@ if(isset($_GET['id']))
                         'class'=>'form-control',
                         'maxlength'   => '15',
                         'placeholder'=>'Write Phone Number',
-                        'value' => set_value('txtPhone'),
+                        'value' => $row['admin_phone']
                     );
                     echo form_input($attributes);
                     ?>
@@ -165,7 +167,7 @@ if(isset($_GET['id']))
                         'class'=>'form-control',
                         'maxlength'   => '15',
                         'placeholder'=>'Write Password',
-                        'value' => set_value('txtPassword'),
+                        'value' => set_value('txtPassword')
                     );
                     echo form_password($attributes);
                     ?>

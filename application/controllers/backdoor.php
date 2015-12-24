@@ -29,8 +29,8 @@ class Backdoor extends CI_Controller
             $this->load->view('includes/admin_header', $data);
             $this->load->view('index');
             $this->load->view('includes/admin_footer');
-        } else {
-            redirect('backdoor/index');
+        }else {
+            redirect('backdoor');
         }
     }
 
@@ -41,7 +41,7 @@ class Backdoor extends CI_Controller
         } else {
 
             if ($msg == 'success') {
-                $data['feedback'] = '<div class="text-center alert alert-success">Successfull Save !!</div>';
+                $data['feedback'] = '<div class="text-center alert alert-success">Successfully Save !!</div>';
             } else if ($msg == 'error') {
                 $data['feedback'] = '<div class=" text-center alert alert-danger">Problem to Insert !!</div>';
             }
